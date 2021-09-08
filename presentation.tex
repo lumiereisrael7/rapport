@@ -1,0 +1,565 @@
+\documentclass[french]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb}
+
+\usepackage{babel}
+
+%\usepackage{subfloat}
+\usepackage{shorttoc}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tcolorbox}
+\usepackage{wallpaper}
+
+\usepackage{listings}
+ 
+\definecolor{darkWhite}{rgb}{0.94,0.94,0.94}
+ 
+\lstset{
+  aboveskip=3mm,
+  belowskip=-2mm,
+  backgroundcolor=\color{darkWhite},
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  commentstyle=\color{red},
+  deletekeywords={...},
+  escapeinside={\%*}{*)},
+  extendedchars=true,
+  framexleftmargin=16pt,
+  framextopmargin=3pt,
+  framexbottommargin=6pt,
+  frame=tb,
+  keepspaces=true,
+  keywordstyle=\color{blue},
+  language=C,
+  literate=
+  {²}{{\textsuperscript{2}}}1
+  {⁴}{{\textsuperscript{4}}}1
+  {⁶}{{\textsuperscript{6}}}1
+  {⁸}{{\textsuperscript{8}}}1
+  {é}{{\'e}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {á}{{\'{a}}}1
+  {ã}{{\~{a}}}1
+  {Á}{{\'{A}}}1
+  {Â}{{\^{A}}}1
+  {Ã}{{\~{A}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {õ}{{\~{o}}}1
+  {ó}{{\'{o}}}1
+  {ô}{{\^{o}}}1
+  {Õ}{{\~{O}}}1
+  {Ó}{{\'{O}}}1
+  {Ô}{{\^{O}}}1
+  {î}{{\^{i}}}1
+  {Î}{{\^{I}}}1
+  {í}{{\'{i}}}1
+  {Í}{{\~{Í}}}1,
+  morekeywords={*,...},
+  numbers=left,
+  numbersep=10pt,
+  numberstyle=\tiny\color{black},
+  rulecolor=\color{black},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=1,
+  stringstyle=\color{gray},
+  tabsize=4,
+  title=\lstname,
+}
+
+\definecolor{soustitre}{RGB}{200,215,215}
+\beamerboxesdeclarecolorscheme{blocgrisclair}{titre}{soustitre}
+
+\definecolor{titre}{RGB}{0.94,0.94,0.94} %120
+\beamerboxesdeclarecolorscheme{blocgris}{titre}{titre}
+\colorlet{blanc}{white}
+\definecolor{bc}{rgb}{0.8,1,1}
+\definecolor{bnc}{rgb}{0,0,1}
+\definecolor{bp}{rgb}{1,0,1}
+
+\definecolor{cle}{rgb}{0.8,1,1}
+\definecolor{cmt}{rgb}{0.6,0.6,0.6}
+\definecolor{bgc}{rgb}{1,1,1}
+\definecolor{str}{rgb}{0,1,1}
+\definecolor{nb}{rgb}{0.3,0.3,0.3}
+
+
+%CHOIX DU THEME et/ou DE SA COULEUR
+% => essayer différents thèmes (en décommantant une des trois lignes suivantes)
+%\usetheme{PaloAlto}
+%\usetheme{Madrid}
+%\usetheme{Copenhagen}
+%\usetheme{Warsaw}
+\usetheme{classic}
+
+% => il est possible, pour un thème donné, de modifier seulement la couleur
+%\usecolortheme{crane}
+\usecolortheme{seahorse}
+%%\usecolortheme{magenta}
+
+%\useoutertheme[left]{sidebar}
+
+
+%Pour le TITLEPAGE
+%\subject{Pour l'obtention du diplôme de Licence spéciale des classes préparatoires}
+\title{\textbf{Conception d'un OS pour Raspberry Pi}}
+\subtitle{}
+\author[Israël Godonou]{\textbf{Israël Jésuclo \textsc{GODONOU}}\\ \textit{\tiny Sous la supervision du \textbf{Dr Hénoc \textsc{SOUDE}} } }
+\date{7 Septembre 2021}
+\institute[IMSP -- Info] {\textbf{Pour l'obtention du Diplôme de Licence spéciale des classes préparatoires}\\ \textcolor{blue}{Option : \textbf{Informatique}}}
+
+
+\begin{document}
+
+\begin{frame}[plain]
+%	\begin{figure}[!ht]
+%		\centering %Centraliser le contenu
+%		\includegraphics[width=1\textwidth]{logos/entete.png}\par\vspace{-0.7cm} %Insertion du logo
+%	\end{figure}
+
+\begin{center}
+	\begin{figure}[!ht]		
+		\centering
+		\subfloat{
+			\includegraphics[width=1.3cm]{logos/logo-uac.png}
+			\label{ Logo UAC}
+		}
+		\hspace{6cm}
+		\subfloat{				
+			\includegraphics[width=1cm]{logos/logo-imsp.png}
+			\label{Logo IMSP}
+		}
+					%\caption{}
+		\label{Logos}	
+	\end{figure}
+	
+	%%%%%%%%%%%%%%% Infos Universite / Institut %%%%%%%%%%%%%%%%%
+	
+	\vspace{-1cm}
+	
+	{\bf{ \tiny
+			Université d'Abomey Calavi\\
+			\textcolor{blue}{
+				The Abdus Salam International Center
+				For Theoretical Physics 
+			}
+			\\Institut de Mathématiques et de Sciences Physiques
+	}}
+	
+	\maketitle
+\end{center}
+\end{frame}
+
+
+%Commandes
+\input{commandes.tex}
+%Numéro de page
+\setbeamertemplate{navigation symbols}{\large \textbf{\insertframenumber/\inserttotalframenumber}}
+
+%Ombrage
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+
+\begin{frame}{Plan}	
+	\tableofcontents[pausesections,hideothersubsections]
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Introduction}
+	\begin{center}
+		Avec l'avènement de l'internet des objets, l'Institut de Mathématiques et de Sciences Physique a décidé de rendre accessible ces nouvelles technologies aux jeunes étudiants. Dans ce cadre, il nous a été demandé d'implémenter un système d'exploitation permettant non seulement de connaitre les différents composants d'un système d'exploitation mais aussi de découvrir les fonctionnalités de la carte Raspberry. En effet, la carte Raspberry est beaucoup utilisé dans le domaine de l'internet des objets.
+	\end{center}
+\end{frame}
+
+\section{Cahier de charge}
+\begin{frame}
+	\transsplitverticalout
+	\titre{Cahier de charge}
+\end{frame}
+
+\begin{frame}{Cahier de charge}
+%\transblindshorizontal
+%\transblindsvertical
+%\transsplitverticalin
+%\transsplitverticalout
+%\transboxin
+\transsplitverticalin
+%\transboxout
+%\transdissolve
+%\transsplithorizontalin
+%\transwipe
+
+%\transduration{1}
+%<2->
+
+\titre{\textit{Notre travail consistait :}}
+\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+	\begin{center}
+		\begin{itemize}
+			\color{nb}
+			\large
+			\item<1-> \textit{à fournir une documentation sur le Pi et ses périphériques;}
+			\item<2-> \textit{à fournir une documentation sur le processeur du Pi et sur l'ARM;}
+			\item<3-> \textit{écrire le code pour configurer les périphériques du Pi;}
+			\item<4-> \textit{écrire le code d'un ordonnanceur utilisant l'algorithme fifo;}
+			\item<5-> \textit{Mettre ensemble tous ses éléments pour fournir un OS modulaire, mono-tâche utilisant l'algorithme d'ordonnancement fifo gérer les tâches.}
+		\end{itemize}
+	\end{center}
+\end{beamerboxesrounded}
+
+%\end{block}
+\end{frame}
+
+
+\section{Réalisations et outils utilisés}
+\begin{frame}
+	\transsplitverticalout
+	\titre{Réalisations \& outils utilisés}
+\end{frame}
+
+\subsection{Réalisations}
+\begin{frame}
+	\transsplitverticalout
+	\titre{Réalisations}
+\end{frame}
+
+\begin{frame}{Réalisations}
+	\transsplitverticalout
+	\titre{\textit{Nous avons pu :}}
+	\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+		\begin{center}
+			\begin{itemize}
+				\color{nb}
+				\large
+				\item<1-> \textit{fournir une documentation sur le Pi et sur des périphériques tels que: }
+				\begin{itemize}
+					\color{white}
+					\item<2-> \textit{Le GPIO ;}
+					\item<3-> \textit{L'UART ;}
+					\item<4-> \textit{Le timer générique de l'ARM ;}
+					\item<5-> \textit{Le contrôleur d'interruption générique de l'ARM;}
+				\end{itemize}
+				\item<6-> \textit{écrire le code nécessaire à la configurations des périphériques sus-cités.}
+			\end{itemize}
+		\end{center}
+	\end{beamerboxesrounded}
+\end{frame}
+
+
+\subsection{Outils utilisés}
+\begin{frame}
+	\transsplitverticalout
+	\titre{Outils utilisés}
+\end{frame}
+
+\begin{frame}{Outils utilisés}
+	\transsplitverticalout
+	\titre{\textit{Nous avons utilisé: }}
+	\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+	\begin{center}
+		\begin{itemize}
+			\color{nb}
+			\large
+			\item<1-> \textit{Le Raspberry Pi 3 modèle b+;}	
+			\item<3-> \textit{La chaîne d'outils croisés \textbf{aarch64-gnu-linux} comprenant: }
+			\begin{itemize}
+				\color{white}
+				\item<4-> \textit{Le compilateur \textbf{aarch64-gnu-linux-gcc} ;}
+				\item<5-> \textit{Le compilateur \textbf{aarch64-gnu-linux-as} ;}
+				\item<6-> \textit{Le linkeur \textbf{aarch64-gnu-linux-ld} ;}
+				\item<7-> \textit{L'outils \textbf{aarch64-gnu-linux-objcopy} ;}
+			\end{itemize}
+			\item<2-> \textit{Essentiellement le langage C et de l'assembleur pour l'architecture aarch64}
+		\end{itemize}
+	\end{center}
+	\end{beamerboxesrounded}
+\end{frame}
+
+\subsubsection{Le Raspberry Pi}
+\begin{frame}
+	\transsplitverticalout
+	\soustitre{Le Pi}
+\end{frame}
+
+\begin{frame}{Le Pi}
+	\transsplitverticalout
+	 \begin{columns}
+		
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[height=0.4\textheight]{images/rpi3b.jpg}
+				\caption{Le Raspberry Pi 3 b+}
+			\end{figure}  
+		\end{column}
+		
+		\begin{column}{0.6\textwidth}
+			\titre{Caractéristiques:}
+			\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+				\begin{center}
+					\begin{itemize}
+						\color{nb}
+						\large 
+						\item<1-> \textit{Nano-ordinateur;}
+						\item<2-> \textit{Processeur ARM cortex A53 quatre cœurs;}
+						\item<3-> \textit{Processeur graphique;}
+						\item<4-> \textit{Ram 1 GB;}
+						\item<5-> \textit{GPIO, UART, Framebuffer...;}
+					\end{itemize}
+				\end{center}
+			\end{beamerboxesrounded}
+		\end{column}
+		
+	\end{columns}
+\end{frame}
+
+\subsubsection{L'ARMv8}
+\begin{frame}
+	\transsplitverticalout
+	\soustitre{L'ARMv8}
+\end{frame}
+
+\begin{frame}{L'ARMv8}
+	\transsplitverticalout
+	jnbjclkvmqj'LMVKLQMNK
+\end{frame}
+
+\section{Périphériques et configurations}
+\begin{frame}
+	\transsplitverticalout
+	\titre{Périphériques configurations}
+\end{frame}
+
+\begin{frame}{Périphériques  configurations}
+	\transsplitverticalout
+	\titre{\textit{Les périphériques:}}
+	\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+		\begin{center}
+			\begin{itemize}
+				\color{nb}
+				\large
+				\item<1-> \textit{GPIO;}
+				\item<2-> \textit{Le Mini-UART;}
+				\item<3-> \textit{Le Gestionnaire d'interruptions générique;}
+				\item<4-> \textit{Le générique timer;}
+			\end{itemize}
+		\end{center}
+	\end{beamerboxesrounded}
+\end{frame}
+
+\subsection{Le GPIO}
+\begin{frame}
+	\transsplitverticalout
+	\soustitre{Le GPIO}
+\end{frame}
+
+\begin{frame}{Le GPIO}
+	\framesubtitle{Description}
+	\titre{\textit{Description:}}
+	\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+	\begin{center}
+		\begin{itemize}
+			\color{nb}
+			\large
+			\item<1-> \textit{General Purpose Input Output;}
+			\item<2-> \textit{53 pins}
+			\begin{itemize}
+				\color{white}
+				\item<3-> \textit{\textbf{40 physiquements implémentés};}
+				\item<4-> \textit{\textbf{Deux fonctions minimum disponible sur chaque pin};}
+				\item<5-> \textit{\textbf{Possibilité de configurer une fonction alternative} ;}
+				%\item<4-> \textit{L'outils \textbf{}} ;}
+			\end{itemize}
+			\item<6-> \textit{\textbf{41 registres};}
+			\begin{itemize}
+				\color{white}
+				\item<7-> \textit{\textbf{GPFSEL{0-5}} ;}
+				\item<8-> \textit{\textbf{GPSET{0-1}} ;}
+				\item<9-> \textit{\textbf{GPCLR{0-1}} ;}
+				\item<10-> \textit{\textbf{GPLEV{0-1}} ;}
+			\end{itemize}
+			\item<11-> \textit{\textbf{Cinq fonctions alternatives}}
+		\end{itemize}
+	\end{center}
+\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}{Le GPIO}
+	\framesubtitle{Configurations}
+	\titre{\textit{Fonctions}}
+	\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+	\begin{center}
+		\begin{itemize}
+			\color{nb}
+			\large
+			\item<1-> \textit{gpio\_call();}
+			\item<2-> \textit{gpio\_configure();}
+			\item<3-> \textit{gpio\_set();}
+			\item<4-> \textit{gpio\_clear();}
+			\item<5-> \textit{gpio\_get\_value();}
+			\item<6-> \textit{gpio\_pin\_on();}
+			\item<7-> \textit{gpio\_pin\_off();}
+		\end{itemize}
+	\end{center}
+\end{beamerboxesrounded}
+\end{frame}
+
+\subsection{L'UART}
+\begin{frame}
+	\transsplitverticalout
+	\soustitre{L'UART}
+\end{frame}
+\begin{frame}{L'UART}
+	\framesubtitle{Description}
+	\titre{\textit{Description}}
+	\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+		\begin{center}
+			\begin{itemize}
+				\color{nb}
+				\large
+				\item<1-> \textit{Périphérique auxiliaire;}
+				\item<2-> \textit{Deux UART;}
+				\begin{itemize}
+					\color{white}
+					\item<3-> \textit{\textbf{Le Mini-UART};}
+					\item<4-> \textit{\textbf{pl011} ;}
+				\end{itemize}
+			\end{itemize}
+		\end{center}
+	\end{beamerboxesrounded}
+\end{frame}
+
+\subsubsection{Le Mini-UART}
+\begin{frame}
+	\transsplitverticalout
+	\soustitre{Le Mini-UART}
+\end{frame}
+\begin{frame}{Le Mini-UART}
+	\framesubtitle{Description}
+	\titre{\textit{Description}}
+	\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+		\begin{center}
+			\begin{itemize}
+				\color{nb}
+				\large
+				\item<1-> \textit{Représente la console;}
+				\item<2-> \textit{Accessible via GPIO14 et GPIO15;}
+				\item<3-> \textit{11 registres;}
+				\begin{itemize}
+					\color{white}
+					\item<4-> \textit{\textbf{AUX\_MU\_IO\_REG};}
+					\item<5-> \textit{\textbf{AUX\_MU\_CNTL\_REG};}
+					\item<6-> \textit{\textbf{AUX\_MU\_IER\_REG};}
+					\item<7-> \textit{\textbf{AUX\_MU\_LCR\_REG};}
+					\item<8-> \textit{\textbf{AUX\_MU\_MCR\_REG};}
+					\item<9-> \textit{\textbf{AUX\_MU\_BAUD\_REG};}	
+				\end{itemize}
+				\item<10-> \textit{Fonction alternative 5;}
+			\end{itemize}
+		\end{center}
+	\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}{Le Mini-UART}
+	\framesubtitle{Configuration}
+	\titre{\textit{Configuration}}
+	\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+		\begin{center}
+			\begin{itemize}
+				\color{nb}
+				\large
+				\item<1-> \textit{Mapping des registres;}
+				\item<2-> \textit{Configuration les broches GPIO14 et GPIO15;}
+				\item<3-> \textit{Les fonctions;}
+				\begin{itemize}
+					\color{white}
+					\item<4-> \textit{\textbf{void uart\_init ( void )};}
+					\item<5-> \textit{\textbf{void uart\_send ( char c )};}
+					\item<6-> \textit{\textbf{char uart\_recv ( void )};}
+					\item<7-> \textit{\textbf{void uart\_send\_string(char* str)};}
+				\end{itemize}
+			\end{itemize}
+		\end{center}
+	\end{beamerboxesrounded}
+\end{frame}
+
+\subsection{Le Controleur d'interruption générique de l'ARM (GIC)}
+\begin{frame}
+	\transsplitverticalout
+	\soustitre{Le GIC}
+\end{frame}
+
+\begin{frame}{Le GIC}
+	\framesubtitle{Description}
+	\titre{\textit{Description:}}
+	\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+		\begin{center}
+			\begin{itemize}
+				\color{nb}
+				\large
+				\item<1-> \textit{;}
+				\item<2-> \textit{;}
+				\begin{itemize}
+					\color{white}
+					\item<3-> \textit{\textbf{40 physiquements implémentés};}
+					\item<4-> \textit{\textbf{Deux fonctions minimum disponible sur chaque pin};}
+					\item<5-> \textit{\textbf{Possibilité de configurer une fonction alternative} ;}
+					%\item<4-> \textit{L'outils \textbf{}} ;}
+				\end{itemize}
+				\item<6-> \textit{\textbf{41 registres};}
+				\begin{itemize}
+					\color{white}
+					\item<7-> \textit{\textbf{GPFSEL{0-5}} ;}
+					\item<8-> \textit{\textbf{GPSET{0-1}} ;}
+					\item<9-> \textit{\textbf{GPCLR{0-1}} ;}
+					\item<10-> \textit{\textbf{GPLEV{0-1}} ;}
+				\end{itemize}
+				\item<11-> \textit{\textbf{Cinq fonctions alternatives}}
+			\end{itemize}
+		\end{center}
+	\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}{Le GPIO}
+	\framesubtitle{Configurations}
+	\titre{\textit{Fonctions}}
+	\begin{beamerboxesrounded}[scheme=blocgrisclair]{}
+		\begin{center}
+			\begin{itemize}
+				\color{nb}
+				\large
+				\item<1-> \textit{unsigned int gpio\_call(unsigned int pin, unsigned int value, unsigned int base, unsigned int field\_size, unsigned int field\_max);}
+				\item<2-> \textit{gpio\_configure();}
+				\item<3-> \textit{gpio\_set();}
+				\item<4-> \textit{gpio\_clear();}
+				\item<5-> \textit{gpio\_get\_value();}
+				\item<6-> \textit{void gpio\_pin\_on(unsigned int  pin);}
+				\item<7-> \textit{void gpio\_pin\_off(unsigned int pin);}
+			\end{itemize}
+		\end{center}
+	\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}{Sommaire}
+	\tableofcontents
+\end{frame}
+
+\end{document}
