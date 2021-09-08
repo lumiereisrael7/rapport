@@ -1,0 +1,1400 @@
+% !TeX encoding = UTF-8
+\documentclass[12pt,a4paper,oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english,french]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[T1]{fontenc} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{wallpaper}
+\usepackage[width=16.00cm,height=24.00cm]{geometry}
+\usepackage{lmodern}
+\graphicspath{./image/}
+\usepackage{capt-of} 
+\usepackage{moreverb}
+\usepackage{float}
+
+\usepackage{color}
+\usepackage[table]{xcolor}
+\usepackage{listings}
+ 
+\definecolor{darkWhite}{rgb}{0.94,0.94,0.94}
+ 
+\lstset{
+  aboveskip=3mm,
+  belowskip=-2mm,
+  backgroundcolor=\color{darkWhite},
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  commentstyle=\color{red},
+  deletekeywords={...},
+  escapeinside={\%*}{*)},
+  extendedchars=true,
+  framexleftmargin=16pt,
+  framextopmargin=3pt,
+  framexbottommargin=6pt,
+  frame=tb,
+  keepspaces=true,
+  keywordstyle=\color{blue},
+  language=C,
+  literate=
+  {²}{{\textsuperscript{2}}}1
+  {⁴}{{\textsuperscript{4}}}1
+  {⁶}{{\textsuperscript{6}}}1
+  {⁸}{{\textsuperscript{8}}}1
+  {é}{{\'e}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {á}{{\'{a}}}1
+  {ã}{{\~{a}}}1
+  {Á}{{\'{A}}}1
+  {Â}{{\^{A}}}1
+  {Ã}{{\~{A}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {õ}{{\~{o}}}1
+  {ó}{{\'{o}}}1
+  {ô}{{\^{o}}}1
+  {Õ}{{\~{O}}}1
+  {Ó}{{\'{O}}}1
+  {Ô}{{\^{O}}}1
+  {î}{{\^{i}}}1
+  {Î}{{\^{I}}}1
+  {í}{{\'{i}}}1
+  {Í}{{\~{Í}}}1,
+  morekeywords={*,...},
+  numbers=left,
+  numbersep=10pt,
+  numberstyle=\tiny\color{black},
+  rulecolor=\color{black},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=1,
+  stringstyle=\color{gray},
+  tabsize=4,
+  title=\lstname,
+}
+
+
+%\renewcommand{\footrulewidth}{\left( \left( \left( 1pt} 
+
+\usepackage{lipsum}
+\usepackage{tikz}
+%\usepackage{eso-pic}
+\usepackage[Conny]{fncychap}
+
+
+\newcommand{\thechapterwords}{\ifcase \thechapter \fi}
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1.7ex \hfill \kern \z@}
+\def \@makechapterhead#1{ {\parindent \z@ \centering \reset@font \thickhrulefill \quad \par \vspace*{5  \p@}
+		\interlinepenalty \@M 
+		\hrule 
+		\vspace*{15 \p@}
+		\huge \bfseries #1 \par 
+		\vspace*{15 \p@}
+		\hrule 
+		\vskip 60\p@
+		
+		
+	} 
+}
+
+
+%\usepackage[Conny]{fncychap} 
+%\renewcommand{\chaptername}{}
+%\renewcommand{\bibliographyname}{Bibliographie}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{{\itshape }}
+\rfoot{{\small \textit{ UAC-IMSP / DANGBO(BENIN)  }}}
+\lfoot{{\small \textit{\copyright \mbox{} David DOSSEH et Israel GODONOU }}}
+\rhead{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+	\frontmatter
+	\begin{titlepage}	
+		%\ThisLRCornerWallPaper{0.6}{logos/SteinECL.jpg}
+		\centering %Centraliser le contenu
+		\includegraphics[width=1.1\textwidth]{logos/entete.png}\par\vspace{1cm} %Insertion du logo
+		\vspace{1.5cm}%Espace de 1,5cm
+		\begin{center}
+			\textsc{\large{\textbf{Projet tutoré}}} 
+		\end{center}
+		\begin{center}
+			Pour l'obtention du Diplôme de Licence spéciale des classes préparatoires\\ Option : \textbf{Informatique}
+		\end{center}
+		\vspace{1cm}%Espace de 1cm
+		\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+		\begin{center}
+			\bfseries\large{\scshape{Conception d'un système d'exploitation pour raspberry }}
+		\end{center} \ %titre
+		\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+		\vspace{1cm}%Espace de 3cm
+		
+		\begin{minipage}{0.5\textwidth} %Minipage pour faire deux colonnes
+			\begin{flushleft} \large %Envoyer à gauche
+				\emph{\textbf{Etudiants:}}\\ %Pour le titre au dessus des noms à gauche
+				David \textsc{DOSSEH} \\
+				Israël Jésuclo \textsc{GODONOU}
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+				\emph{\textbf{Encadreur:}} \\
+				Dr Hénoc \textsc{SOUDE}
+			\end{flushright}
+		\end{minipage}\\[4cm]
+		\vfill
+		\begin{center}
+			\textbf{Année Universitaire:} 2020-2021
+		\end{center} 
+	\begin{tikzpicture}[remember picture, overlay]
+	\begin{scope}[shift={(current page.south west)},shift={(1,1)},scale=1]
+	\shade[ball color=purple,opacity=.6] (0,0) circle (10ex);
+	\shade[ball color=purple,opacity=0.5] (1.7,1) circle (5ex);
+	\shade[ball color=purple,opacity=.8] (1.5,3) circle (2ex);
+	\shade[ball color=cyan,opacity=.5] (-0.5,3) circle (1ex);
+	\shade[ball color=orange,opacity=.8] (1,4) circle (1ex);
+	\shade[ball color=pink,opacity=.6] (3.5,2.5) circle (2ex);
+	\shade[ball color=gray,opacity=.8] (2.5,4.5) circle (4ex);
+	\shade[ball color=yellow,opacity=.5] (3,4) circle (3ex);
+	\shade[ball color=blue,opacity=.8] (4.5,4.5) circle (3ex);
+	\shade[ball color=blue,opacity=.5] (5.1,4.7) circle (2ex);
+	\shade[ball color=blue,opacity=.8] (5,6) circle (1.5ex);
+	\shade[ball color=blue,opacity=.6] (3.5,5.5) circle (2ex);
+	\shade[ball color=blue,opacity=.8] (5,3) circle (1ex);
+	\end{scope}
+	\end{tikzpicture} 
+	\end{titlepage}
+	\frontmatter
+	\renewcommand{\contentsname}{Table des matières}	
+	\tableofcontents
+	\chapter{DEDICACES} 
+	$\qquad$ Je dédie ce travail au Saint Esprit pour sa personnalité et son oeuvre de chaque jour en moi. Je le dédie également à maman et papa pour leur travail et implication dans ma vie.
+	\chapter{REMERCIEMENTS} 
+	$\qquad$Je tiens à exprimer mes remerciements à Dieu, mon Père pour qui il est et ce qu'il ne cesse d'accomplir en moi pour que je sois une bénédiction pour tout le monde entier. \\
+	
+	J'exprime également ma reconnaissance et mes remerciements à mes chers parents, papa, maman mes frères et mes soeurs, ainsi que mes maîtres à quelque niveau que ce soit pour leur investissement dans le champ que je suis.\\
+	
+	J'adresse aussi mess sincères remerciements à mon cher camarade David DOSSEH pour tous ses efforts et ses peines dans la réussite de ce projet, sachant qu'il n'est pas le fruit d'une seule personne, mais d'un travail à deux. \\
+	
+	Je voudrais également remercier le Dr Hénoc SOUDE pour son suivi et son accompagnement pour l'aboutissement de ce travail. Sans lui ce travail n'aurait pas un sort.\\
+	
+	Nous ne saurions terminer cette liste sans remercier tous ceux qui de près ou de loin ont permis la réalisation de ce travail.
+		
+		
+	%\chapter{Sommaire}
+	%\tableofcontents
+	\chapter{Acronyme}
+	\begin{itemize}
+	\item \textbf{OS:} Operating System\\
+	\item \textbf{Pi:} Raspberry Pi\\
+	\item \textbf{ISA:} Instruction Set Architecture (Architecture de jeu d'nstruction)\\
+	\item \textbf{GIC:} Generic Interrupt controller\\
+\end{itemize}
+	
+	\listoffigures
+                                                                                                                                                                                                                                   
+	
+	\chapter{Résumé}
+	Nous avons mis en place un système d'exploitation rudimentaire pour Raspberry Pi. Pour ce faire, nous avons écrit et configuré les pilotes essentiels, ainsi qu'implémenter les concepts de base d'un OS. Plus besoin donc d'avoir une image Raspbian pour interagir avec le Pi. N'importe qui peut écrire son code ou module et l'intégrer au code existant pour construire une application selon ses besoins.
+	\chapter{Abstract}
+	We have implemented a rudimentary operating system for raspberry. To do this, we wrote and configured the essential drivers, as well as implemented the basic concepts of an OS. So you no longer need to have a Raspbian image to interact with the Pi. Anyone can write their code or module and integrate it into existing code to build their application according to their needs.
+	\chapter{Introduction}
+	Avec l'avènement de l'internet des objets, l'Institut de Mathématiques et de Sciences Physique a décidé de rendre accessible ces nouvelles technologies aux jeunes étudiants. Dans ce cadre, il nous a été demandé d'implémenter un système d'exploitation permettant non seulement de connaitre les différents composants d'un système d'exploitation mais aussi de découvrir les fonctionnalités de la carte Raspberry. En effet, la carte Raspberry est beaucoup utilisé dans le domaine de l'internet des objets.
+	
+	\paragraph{Cahier des charges:} Le travail consiste dans un premier temps à fournir une documentation complète présentant les périphériques du Raspberry et leurs fonctionnalités. Ensuite nous devons proposer un OS modulaire offrant les modules de bases permettant aux étudiants de construire des application selon leur besoin. Notre système doit être mono-tâche et avoir un ordonnanceur permettant de planifier les tâches selon leur ordre d'arrivé.
+	
+	\paragraph{Réalisations:} Nous avons pu offrir dans notre document une vue générale de l'architecture du processeur(ARMv8) et des explications sur les périphériques du matériel tels que: les broches \textbf{GPIO} pour la communication avec le monde extérieur(les leds par exemple); le \textbf{mini UART}, pour la lecture et écriture sur les ports séries; le \textbf{timer générique de l'ARM} qui offre une utilisation du temps; et les \textbf{interruptions}.
+	
+	\mainmatter
+	
+	\chapter{Le Raspberry Pi}
+	\section{Présentation}
+	\subsection{Le micro ordinateur Pi}
+	Le Raspberry Pi est un petit ordinateur, à processeur ARM, de la taille d'une carte de crédit, sorti en avril 2012. Il est conçu par les professeurs du département informatique de l'université de Cambridge dans le cadre de la \textbf{fondation Raspberry Pi}, une organisation caritative dont le but est de promouvoir les bases de la programmation informatique dans les écoles. Il fut créé afin de démocratiser l'accès aux ordinateurs et au digital making (terme anglophone désignant à la fois la capacité de résolution de problèmes et les compétences techniques et informatique).\\
+	Cette démocratisation est possible en raison du coût réduit du Raspberry Pi, mais aussi grâce aux logiciels libres. Le Pi permet l'exécution de plusieurs variantes du système d'exploitation libre GNU/Linux, notamment Debian, et des logiciels compatibles. Il fonctionne également avec le système d'exploitation Microsoft Windows : Windows 10 IoT Core, Windows 10 on ARM (pour l'instant relativement instable), celui de Google Android Pi et même une version de l'OS/MVT d'IBM accompagnée du système APL\\360. \\
+	Il est fourni nu, c'est-à-dire la carte mère seule, sans boîtier, câble d'alimentation, clavier, souris ni écran, dans l'objectif de diminuer les coûts et de permettre l'utilisation d'anciens matériels. Néanmoins des « kits » regroupant le « tout en un » sont disponibles sur le web à partir de quelques dizaines d'euros seulement.\\
+	
+	Le Raspberry Pi a la capacité d'accueillir une carte électronique qui se fixe sur ses ports GPIO. Ces cartes peuvent ajouter des fonctionnalités, mais ont besoin des connaissances de l'utilisateur dans le domaine du codage. Elles sont surnommés « HAT », acronyme de \textbf{Hardware Attached on Top} (« matériel informatique attaché au-dessus »). le Pi est utilisé par des créateurs et bricoleurs du monde entier car son prix et sa taille le rendent très attirant. Il existe plusieurs projets, tous plus fous les uns que les autres, qui se base sur le Pi. Nous pouvons citer: Une machine à café contrôlée par la voix, un téléphone VOIP, un bateau autonome, un serveur de backup, une station météo, un ordinateur de bord pour ballon stratosphérique, un drone, un serveur média, des applications en domotique… Pour l'expérimenter, nous nous avons opté pour l'écriture d'un OS assez rudimentaire.\\
+	
+	\subsection{Spécifications matérielles et architectures}
+	Le Pi possède un processeur ARM. Il inclut 1, 2 ou 4 ports USB, un port RJ45 et 256 Mo de mémoire vive pour le modèle d'origine (jusqu'à 8 Go sur les dernières versions). Son circuit graphique BMC VideoCore permet de décoder des flux Blu-Ray full HD (1080p 30 images par seconde), d'émuler d’anciennes consoles et d'exécuter des jeux vidéo relativement récents.
+	
+	\subsubsection{Modèles A}
+	\begin{itemize}
+		\item \textbf{Modèle 1 A}\\
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=8cm,height=6cm]{images/chapitre1/PiA.jpg}
+			\caption{Pi modèle A}
+			\label{Types}
+		\end{center}
+	\end{figure}
+	
+	\textbf{Processeur :} ARM1176JZF-S (ARMv6) 700 MHz Broadcom 2835 (dispose d'un décodeur Broadcom VideoCore IV, permettant le décodage H.264 FullHD 1080P et d'un VFPv2 pour le calcul des opérations à virgule) ;\\
+	\textbf{RAM :} 256 Mo ;\\
+	\textbf{2 Sorties vidéo :} Composite et HDMI ;\\
+	\textbf{1 Sortie audio:} stéréo Jack 3,5 mm (sortie son 5.1 sur la prise HDMI) ;\\
+	\textbf{Unité de lecture-écriture de carte mémoire :} SDHC / MMC / SDIO ;\\
+	\textbf{1 Port USB 2.0} ;\\
+	\textbf{Prise pour alimentation Micro-USB} (consommation : 400 mA + périphériques);\\
+	Des entrées/sorties supplémentaires sont accessibles directement sur la carte mère via des pins 3v3: GPIO, S2C, I2C, SPI ;\\
+	\textbf{API logicielle vidéo :} OpenGL : version embarquée OpenGL ES 2.0 ;\\
+	\textbf{Décodage vidéo :} 1080p30 H.264 high-profile.\\
+	
+	\item \textbf{Modèle 1 A+ }\\
+	\textbf{Différences avec le modèle A:}
+	\textbf{Plus petit :} 65 mm de long (contre 86 mm);\\
+	Lecteur de carte microSD en lieu et place du lecteur SD;\\
+	\textbf{GPIO:} 40 broches;\\
+	\textbf{Nouveau chipset audio};\\
+	\textbf{Consommation électrique moindre};\\
+	\textbf{Prix réduit à 20\$}.\\
+	\end{itemize}
+	
+	\subsubsection{Modèles B}
+	\textbf{Il existe plusieurs révisions du modèle B.}\\
+	\begin{itemize}
+		\item \textbf{Modèle 1 B}\\
+		\textbf{Spécificités du modèle B rev1 :}\\
+		\textbf{2 ports USB 2.0} au lieu de l'unique port du modèle A, mais sur un seul bus, via le composant SMSC LAN9512 ;\\
+		\textbf{ 1 port réseau Fast Ethernet} (10/100 Mbit/s) via le même composant SMSC.\\
+		Le circuit LAN9512 qui gère les deux ports USB et le port réseau, est connecté au CPU via un unique port USB ; la bande passante est donc partagée entre ces trois ports.\\
+		
+		\textbf{Spécificités du modèle Rev1 + ECN0003 :}\\
+		Suppression des fusibles protégeant les sorties USB;\\
+		Suppression de la diode D14, qui pouvait provoquer des interférences avec des périphériques possédant une broche CEC, lorsque le Raspberry restait connecté sans être alimenté.\\
+		
+		\textbf{Spécificités du Raspberry Pi B Rev2 :}\\
+		\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=8cm,height=6cm]{images/chapitre1/PiB2Rev2.jpg}
+			\caption{Pi modèle B Revision 2}
+			\label{Types}
+		\end{center}
+		\end{figure}
+
+		Implantation du reset (en reliant les broches 1 et 2 de P6);\\
+		Support JTAG (deux broches GPIO interchangées);\\
+		Support I2C (canaux primaire et secondaire inversés);\\
+		Suppression de quatre signaux GPIO utilisés pour l'identification de version, et réaffectation à d'autres rôles;\\
+		SMSC +1V8;\\
+		Deux trous de fixation;\\
+		Correction du marquage des LED sur la platine.\\
+		
+		\textbf{Spécificités du Raspberry Pi B 512 Mo }:\\
+		Prise pour alimentation micro-USB (consommation : 700 mA) ;\\
+		La RAM passe à 512Mo (au lieu de 256 Mo sur les modèles précédents) ;\\
+		Le modèle est estampillé avec la référence 4G en lieu et place de l'ancienne référence 2G.\\
+		
+		\item \textbf{Modèle 1 B+}\\
+		\textbf{Différences par rapport au modèle initial :}\\
+		\textbf{GPIO:} 40 broches;\\
+		\textbf{4 ports USB 2.0} et meilleur comportement en cas de surcharge;\\
+		\textbf{micro SD};\\
+		réduction de consommation de 3,5W à 3W;\\
+		suppression de la prise RCA au profit d'une prise mini-jack 4 points, comprenant une sortie sonore et vidéo;\\
+		
+		\item \textbf{Modèle 2 B (Raspberry Pi 2)}\\
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=8cm,height=6cm]{images/chapitre1/Pi2B.jpg}
+				\caption{Pi modèle 2 B}
+				\label{Types}
+			\end{center}
+		\end{figure}
+		Le 2 février 2015, la fondation Raspberry Pi annonce la sortie du Raspberry Pi 2, plus puissant, il est équipé d'un processeur Broadcom BCM2836, quatre cœurs Cortex-A7 (ARMv7) à 900 MHz, accompagné de 1Go de RAM. Il possède les mêmes dimensions et la même connectique que le modèle B+.\\
+		
+		\item \textbf{Modèle 3 B (Raspberry Pi 3)}\\
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=8cm,height=6cm]{images/chapitre1/Pi3B.jpg}
+				\caption{Pi modèle 3 B}
+				\label{Types}
+			\end{center}
+		\end{figure}
+		
+		Le 29 février 2016, pour le quatrième anniversaire de la commercialisation du premier modèle, la fondation Raspberry Pi annonce la sortie du Raspberry Pi 3. Comparé au Pi 2, il dispose d'un processeur Broadcom BCM2837 64 bit à quatre cœurs ARM Cortex-A53 à 1,2 GHz, d'une puce Wifi 802.11n et Bluetooth 4.1 intégrée. Il possède les mêmes dimensions et connectiques que les modèles 2 et B+. La vitesse d'horloge est 33\% plus rapide que le Pi 2, ce qui permet d'avoir un gain d'environ 50-60\% de performance en mode 32 bits. Il est recommandé d'utiliser un adaptateur de 2,5 A. Tous les travaux et tutoriels du Pi 2 sont parfaitement compatibles avec le Pi 3.\\
+		
+		\item \textbf{Modèle 3 B+ (Raspberry Pi 3+)}\\
+		Le 14 mars 2018, la fondation Raspberry Pi annonce la mise à jour du Raspberry Pi 3 vers le modèle B+. On y trouve une mise à jour du processeur Broadcom BCM2837B0 64 bit à quatre cœurs ARM Cortex-A53 cadencé à 1,4 GHz au lieu du 1,2 GHz. la puce Cypress CYW43438 est remplacée par une nouvelle puce CYW43455 supportant le WiFi Dual-band 802.11ac et la version 4.2 du Bluetooth. Et d'une prise en charge du Power over Ethernet grâce à un élément supplémentaire.\\
+		
+		\item \textbf{Modèle 4 B (Raspberry Pi 4)}\\
+		Le 24 juin 2019, la fondation Raspberry Pi annonce la sortie du Raspberry Pi 4. Le 10 juillet 2019, la fondation annonce des problèmes de conception, notamment l'absence d'une résistance, qui ne permettent pas à certains chargeurs USB-C d’alimenter le Raspberry Pi. La fondation annonce que le problème sera corrigé dans une révision future du produit. Dans les faits, seuls les câbles « e-marked » posent problème parce qu'ils détectent le Raspberry Pi comme étant un équipement audio.\\
+		Le 28 mai 2020 est annoncée une version à 8Go de RAM Bien que Raspbian ne soit que 32 bits, les 8 Go peuvent être exploités via des processus indépendants lancés sous ce système. Une version 64 bits est annoncée, elle aussi branche de Debian, qui ne se nommera plus Raspbian, mais Raspberry Pi OS pour éviter les confusions, et identique en interface.\\
+		En novembre 2020, elle lance une version du Raspberry Pi 4 (\textbf{Raspberry Pi 400}) permettant de monter facilement un ordinateur de bureau en intégrant dans un clavier l'ensemble des composantes d'un ordinateur personnel et auquel des périphériques peuvent être branchés (écran, souris, etc.).\\
+	\end{itemize}
+	Les autres versions du Pi ainsi que leurs caractéristiques sont disponibles sur le web. Pour notre expérience, nous avons eu à travailler sur le Pi 3 B+.
+	
+	
+	\subsection{Les périphériques du Pi configurés}
+	Malgré sa petite taille, le Raspberry Pi dispose de tous les périphériques que tout nano-ordinateur digne de ce nom doit avoir. Par ailleurs, l’avantage du Raspberry Pi est que de par sa structure monocarte (une seule carte mère), toutes les connectiques soient fixées sur un même support. Ce qui rend l’appareil tout aussi compact que pratique. Dans cette partie nous allons présenter les périphériques que nous avons utilisé dans notre OS ainsi que leur plan d'adressage.
+	\subsubsection{GPIO}
+	\begin{itemize}
+	\item \textbf{Description}\\
+	Une caractéristique puissante du Raspberry Pi est la rangée de broches \textbf{GPIO}, pour General Purpose Input Output (entrée / sortie à usage général), le long du bord supérieur de la carte. On dispose de 54 pins GPIO divisé en 2 banques possédant au moins deux fonctions alternatives. Mais sur le Pi, nous comptons sur l'en-tête 40 pins et ceci se trouve sur toutes les cartes Raspberry Pi actuelles (non peuplées sur Pi Zero et Pi Zero W). Avant le Pi 1 Model B+ (2014), les cartes comprenaient un en-tête plus court à 26 broches. Deux broches 5V et deux broches 3V3 sont présentes sur la carte, ainsi qu’un certain nombre de broches de masse (0V), qui ne sont pas configurables. Les broches restantes sont toutes des broches 3V3 à usage général, ce qui signifie que les sorties sont réglées sur 3V3 et que les entrées sont tolérantes à 3V3. Un pin peut être programmé à être comme entrée ou une sortie et certains d'entre eux sont par défaut désignés pour interagir avec d'autres périphériques du Pi. Il faudra donc pour cela activer sur ces pins des fonctions alternatives. \\
+	\begin{figure}[H]
+			\centering
+			\includegraphics[width=10cm,height=4cm]{images/chapitre1/gpio_pin2.jpg}
+			\caption{Les pins du GPIO}
+			\label{Types}
+	\end{figure}
+	\begin{figure}[H]
+			\centering
+			\includegraphics[width=12cm,height=6cm]{images/chapitre1/gpio_pin.jpg}
+			\caption{Les pins du GPIO avec descriptions}
+			\label{Types}
+	\end{figure}
+	
+	\item \textbf{Les registres du GPIO}\\
+	GPIO fournit un tas de registres. Chaque bit d'un tel registre correspond à une broche sur la carte Pi. En écrivant 1 ou 0 pour enregistrer les bits, le logiciel peut contrôler la tension de sortie sur les broches, par exemple pour allumer/éteindre les LED connectées à ces broches.\\ 
+	Le GPIO dispose 41 registres dont les accès sont supposés être de 32 bits. La figure suivante montre tous les registres du Pi ainsi que leur adresse.\\
+		\begin{figure}[H]
+				\centering
+				\includegraphics[width=13cm,height=8cm]{images/chapitre1/gpio_reg1.jpg}
+				\caption{Les registres du GPIO et leur adresse}
+				\label{Types}
+		\end{figure}
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=13cm,height=8cm]{images/chapitre1/gpio_reg2.jpg}
+		\caption{Les registres du GPIO et leur adresse}
+		\label{Types}
+	\end{figure}
+		
+		La configuration d'un pin nécessite l'écriture dans ces registres. Nous parlerons uniquement de certains d'entre eux. La description complète de tous les registres est disponible dans le manuel du processeur bcm2837.\\
+		
+		\textbf{Les registres GPFSELn}\\
+			les registres \textbf{GPFSEL}, pour GPIO Fonction Select, sont utilisés pour définir des opérations sur les pins GPIO. Ce sont ces registres qui permettent de configurer un pin comme entrée ou sortie ou d'attribuer une fonction alternative à un pin. On distingue 6 registres GPFSEL{0-5} dont chacun des 5 premiers s'occupe de 10 pins à partir du pin 0 dans l'ordre croissant et le dernier registre des 4 pins restants. Les pins sont numérotés de 0 à 53 et leur numéro ne correspond pas forcément à leur position sur le matériel. Pour configurer un pin n, il faut choisir le registre GPFSEL qui s'en occupe, accéder au n-ieme champ de ce registre et écrire un nombre entre 0 et 7 en binaire sur 3 bit, selon l'objectif à atteindre. La figure suivante nous montre le registre GPFSEL1 responsable des pins 10 à 19).\\
+			\begin{figure}[H]
+					\centering
+					\includegraphics[width=13cm,height=8cm]{images/chapitre1/gpio_fsel.jpg}
+					\caption{Le registre GPFSEL1}
+					\label{Types}
+			\end{figure}
+			
+		\textbf{Les registres GPSET0 et GPSET1}\\
+			Les registres \textbf{GPSET0} et \textbf{GPSET1} s'occupent respectivement des 0 - 31 ieme premiers pins et des 32 - 53 ieme derniers pins du GPIO. \textbf{GPSET}, pour GPIO 0utput Set register, est celui qui permet configurer un pin défini comme sortie. L'écriture d'un 0 dans un champ n'a aucun effet cependant l'écriture de 1 dans le champ 1 du registre, produit un effet si le pin n était déjà au préalable défini comme une sortie. La figure suivante nous montre les champs du registre.\\
+			\begin{figure}[H]
+					\centering
+					\includegraphics[width=13cm,height=8cm]{images/chapitre1/gpio_set.jpg}
+					\caption{Les registres GPSET}
+					\label{Types}
+			\end{figure}
+			
+		\textbf{Les registres GPCLR0 et GPCLR1}\\
+			\textbf{GPCLR}, pour GPIO Output Clear, sont des registres qui permettent de désactiver un pin défini comme sortie. Écrire 0 dans un champ n'a aucun effet, mais écrire 1 dans un champ désactive le pin correspondant s'il était configuré comme une sortie. Sinon cela n'aura aucun effet.\\
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=13cm,height=6cm]{images/chapitre1/gpio_clr1.jpg}
+				\caption{Les registres GPCLR}
+				\label{Types}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=13cm,height=2cm]{images/chapitre1/gpio_clr2.jpg}
+				\caption{Les registres GPCLR}
+				\label{Types}
+			\end{figure}
+			
+			
+		\textbf{Les registres GPLEV0 et GPLEV1}\\
+			\textbf{GPLEV}, pour GPIO Level, sont des registres utilisés dans le but de connaitre l'actuelle valeur d'un pin donné.	\\
+			\begin{figure}[H]
+					\centering
+					\includegraphics[width=13cm,height=6cm]{images/chapitre1/gpio_lev.jpg}
+					\caption{Les registres GPLEV}
+					\label{Types}
+			\end{figure}
+			
+		\textbf{Les autres registres et leurs description se trouvent dans le manuel bcm2837 du processeur.}\\
+	\item \textbf{Les fonctions alternatives}\\
+	En plus des périphériques d’entrée et de sortie simples, les broches GPIO peuvent être utilisées avec une variété de fonctions alternatives.\\
+	La plupart des broches peuvent être utilisées avec différents périphériques IO. Donc, avant d'utiliser une broche particulière, nous devons sélectionner la fonction alternative de la broche, un nombre de 0 à 5 qui peut être défini pour chaque broche et configure quel périphérique IO est virtuellement "connecté" à la broche.\\
+
+	Voir la liste de toutes les fonctions alternatives GPIO disponibles dans l'image ci-dessous:\\
+	\begin{figure}[H]
+			\centering
+			\includegraphics[width=16cm,height=15cm]{images/chapitre1/gpio_fct1.png}
+			\caption{Les fonctions alternatives}
+			\label{Types}
+	\end{figure}
+	\end{itemize}
+
+	\subsubsection{UART}
+	\textbf{UART}, pour Universal Asynchronous Receiver Transmitter, est un émetteur-récepteur asynchrone universel. En langage courant, c'est le composant utilisé pour faire la liaison entre l'ordinateur et le port série. l'UART est un dispositif de caractères simple permettant au logiciel d'envoyer des caractères de texte à une autre machine. Il nécessite un code logiciel très minimum.\\
+	Dans la forme la plus simple, le logiciel écrit des valeurs ASCII dans les registres UART. Le dispositif UART convertit les valeurs écrites en une séquence de hautes et basses tensions sur le fil. Cette séquence est transmise via le TTL-to-serial cable et est interprétée par un émulateur de terminal (par exemple PuTTY sous Windows, minicom sous Linux).\\
+	
+	Les Pi sont composé de deux UART: le \textbf{Mini UART}, pour la transmission et le réception série et l'\textbf{UART0}, qui gère le périphérique Bluetooth. \\
+	
+	\textbf{UART primaire}\\
+	Sur le Raspberry Pi, un UART est sélectionné pour être présent sur GPIO 14 (transmission) et 15 (réception) - c’est l’UART primaire. Par défaut, ce sera également l’UART sur lequel une console peut être présente. Notez que GPIO 14 est la broche 8 sur l’en-tête GPIO, tandis que GPIO 15 est la broche 10. C'est le Mini UART qui joue ce rôle pour le Pi 3 B+.\\
+	
+	\textbf{UART secondaire}\\
+	L’UART secondaire n’est normalement pas présent sur le connecteur GPIO. Par défaut, l’UART secondaire est connecté au côté Bluetooth du contrôleur LAN/Bluetooth sans fil combiné, sur les modèles qui contiennent ce contrôleur. Il s'agit ici de l'UART0.\\
+	
+	\textbf{Qu'il soit primaire ou secondaire, le Mini UART est désactivé par défaut}. Pour l'utiliser il faut configurer le Pi pour utiliser une fréquence d’horloge de base VPU fixe. C’est parce que l’horloge mini UART est liée à l’horloge principale VPU, de sorte que lorsque la fréquence d’horloge principale change, le débit en bauds UART change également. Les paramètres et peuvent être ajoutés pour modifier le comportement du mini UART.\\
+	
+	Le mini UART a les caractéristiques suivantes :
+	\begin{itemize}
+		\item Fonctionnement sur 7 ou 8 bits.\\ 
+		\item 1 bit de départ et 1 bit d'arrêt.\\ 
+		\item Pas de parité. \\
+		\item Génération de pause.\\ 
+		\item FIFO de 8 symboles pour la réception et la transmission. \\
+		\item Réception contrôlée par le logiciel, Transmission lisible par le logiciel.\\
+		\item Contrôle automatique de flux avec niveau FIFO programmable. \\
+		\item Débit en bauds dérivé de l'horloge système.\\ \\
+	\end{itemize}
+	
+	\textbf{Aperçu des registres du Mini UART}\\
+	Le registre \textbf{UX\_MU\_IO\_REG}, situé à l'adresse 0x7E215040, est le registre principale pour accéder à la FIFO de l'UART.\\
+	\begin{figure}[H]
+			\centering
+			\includegraphics[width=15cm,height=10cm]{images/chapitre1/aux_io_reg.jpg}
+			\caption{Le registre principale du mini UART}
+			\label{Types}
+	\end{figure}
+	Les autres registres du mini UART et leur descriptions sont décrits dans le manuel bcm2837 du processeur.
+	
+	Le GPIO peut être utilisé pour configurer le comportement de différentes broches GPIO. Par exemple, pour pouvoir utiliser le Mini UART, nous devons activer les broches 14 et 15 et les configurer. Il nous faut alors avant tout attribuer la fonction aleternative 5 sur chacune de ces broches à travers le registre GPSEL1, responsable des broches 14 et 15.
+	
+	\chapter{L'ARM V8}
+	
+	\section{Présentation}
+	L'architecture ARMv8-A est la dernière génération d'architecture ARM destinée au profil des applications. Le nom ARMv8 est utilisé pour décrire l'architecture globale, qui maintenant
+	inclut à la fois l'exécution 32 bits et l'exécution 64 bits. Il introduit la capacité d'exécution avec des registres de 64 bits, tout en préservant la rétrocompatibilité avec les logiciel ARMv7 utilisant les registres 32 bits. 
+	
+	\section{Développement de l'ARM au fil des années}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=15cm,height=8cm]{images/chapitre4/arm_version.png}
+		\caption{Vue d'ensemble des versions de l'ARM}
+		\label{Types}
+	\end{figure}
+	
+	\section{Propriétés du processeur ARMv8-A}
+	
+	La figure suivante compare les propriétés des implémentations de processeur d'ARM qui prennent en charge l'architecture ARMv8-A.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=20cm,height=15cm]{images/chapitre4/cpu_properties.png}
+		\caption{Caractéristiques des processeurs A53 et A57}
+		\label{Types}
+	\end{figure}	
+	
+	
+	\section{Le processeur Cortex-A53}
+	
+	Le processeur Cortex-A53 est un processeur de milieu de gamme à faible consommation avec entre un et quatre cœurs dans un seul cluster, chacun avec un sous-système de cache L1, un GICv3/4 intégré en option interface et un contrôleur de cache L2 en option. Le processeur Cortex-A53 est un processeur extrêmement économe en énergie capable de prendre en charge du code 32 et 64 bits. Il offre des performances nettement plus élevées que le très réussi Processeur Cortex-A7. Il est capable de se déployer en tant que processeur d'applications autonome, ou associé au processeur Cortex-A57 dans une configuration big.LITTLE pour des performances optimales, évolutivité et efficacité énergétique.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=20cm,height=18cm]{images/chapitre4/a53_cpu.png}
+		\caption{Processeur A53.}
+		\label{Types}
+	\end{figure}
+	
+	\section{Jeux d'instructions ARMv8}
+	\subsection{Description}
+	Une architecture de jeu d'instructions (ISA) fait partie du modèle abstrait d'un ordinateur. Il définit comment le logiciel contrôle le processeur.
+	L'un des changements les plus importants introduits dans l'architecture ARMv8 est l'ajout d'un jeu d'instructions 64 bits. Ce jeu complète l'architecture existante du jeu d'instructions 32 bits. Cet ajout donne accès à des registres d'entiers et des opérations de données de 64 bits, et la possibilité d'utiliser des pointeurs de taille 64 bits vers la mémoire. Les nouvelles instructions sont appelées A64 et s'exécutent dans l'État d'exécution Aarch64.\\
+	ARMv8 comprend également le jeu d'instructions ARM d'origine, désormais appelé A32 et le jeu d'instructions Thumb (T32). A32 et T32 s'exécutent tous les deux dans l'état Aarch32, et fournissent une compatibilité avec ARMv7.\\
+	Bien que ARMv8-A offre une compatibilité avec les architectures ARM 32 bits, le jeu d'instructions A64 est séparé et distinct de l'ancien ISA et est codé différemment. A64 ajoute des fonctionnalités supplémentaires tout en supprimant d'autres fonctionnalités qui pourraient potentiellement limiter la vitesse ou l'efficacité énergétique des implémentations hautes performances.\\ L'architecture ARMv8 inclut également quelques améliorations aux jeux d'instructions 32 bits (A32 et T32). Pourtant, le code qui utilise de telles fonctionnalités n'est pas compatible avec les anciennes implémentations ARMv7.
+	
+	\subsection{Les régistres  utilisés  dans l'ISA 64 pour l'arm v8}
+	\subsubsection{Les registres à usage général}
+	La plupart des instructions A64 fonctionnent sur des registres. L'architecture fournit 31 registres à usage général. Chaque registre peut être utilisé comme un registre de 64 bits (X0..X30), ou comme un registre de 32 bits (W0..W30). Ce sont deux manières distinctes de considérer le même registre. Par exemple, ce diagramme de registre montre que W0 correspond aux 32 bits inférieurs de X0 et W1 correspond aux 32 bits inférieurs de X1 :
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=17cm,height=6cm]{images/chapitre2/general_purpose_register.png}
+		\caption{Registres à usage général.}
+		\label{Types}
+	\end{figure}
+
+	Pour les instructions de traitement de données, le choix de X ou W détermine la taille de l'opération. L'utilisation des registres X entraînera des calculs 64 bits et l'utilisation des registres W entraînera des calculs 32 bits.
+	\textbf{ADD W0, W1, W0}\\ 
+	Cet exemple effectue une addition d'entier sur 32 bits.\\
+	
+	\textbf{ADD X0, X1, X0}\\ 
+	Cet exemple effectue une addition d'entier sur 64 bits.\\
+	\newline
+	Lorsqu'un registre W est écrit, comme dans l'exemple ci-dessus, les 32 premiers bits du registre X 64 bits correspondant sont mis à zéro.	
+
+	\subsubsection{Les regsitres systèmes}
+	En plus des registres à usage général, l'architecture définit les registres du système. Ces registres sont utilisés pour configurer le processeur et pour contrôler les systèmes tels que le MMU et la gestion des exceptions. Les registres système ne peuvent pas être utilisés directement pour le traitement des données ou les instructions de load/store. Le contenu d'un registre système doit être lu dans un registre X, exploité, puis réécrit dans le registre système. Il existe deux instructions spécialisées pour accéder aux registres systèmes: \\
+	\textbf{MSR Xd, <system register>} : Lis le registre système dans Xd.\\
+
+	\textbf{MRS <system register>, Xn} : Ecris Xn dans le registre système.\\
+
+	Les registres systèmes sont spécifiés par leur nom.\\ 
+	Exemple : SCTLR\_EL1\\
+	\textbf{MSR X0, SCTLR\_EL1} : Lis SCTLR\_EL1 dans X0.\\
+
+	\subsubsection{Classement des registres} 
+	Dans cette section, nous classerons les registres par groupes fonctionnels.\\
+	
+	\textbf{Groupe id}\\
+	
+	\begin{tabular}{%
+			|p{0.23\linewidth}|p{0.7\textwidth}|}
+		\hline \textbf{Nom} &  \textbf{Description} \\
+		\hline	MPIDR\_EL1 & Dans un système multiprocesseur, fournit un mécanisme d'identification PE supplémentaire à des fins de planification\\
+		\hline
+	\end{tabular}
+	\newline
+	\newline
+	\newline
+	
+	\textbf{Groupe pstate}\\
+
+	\begin{tabular}{%
+			|p{0.23\linewidth}|p{0.7\textwidth}|}
+		\hline \textbf{Nom} &  \textbf{Description} \\
+		\hline	SCTLR\_EL1 & Fournit un contrôle de haut niveau du système, y compris son système de mémoire à EL1 et EL0\\
+		\hline SCTLR\_EL2 &  Fournit un contrôle de haut niveau du système, y compris son système de mémoire à EL2\\
+		\hline SCTLR\_EL3 &  Fournit un contrôle de haut niveau du système, y compris son système de mémoire à EL3\\
+		\hline CurrentEl & Contient le niveau d'exception actuel\\
+		\hline SPSel & Permet au pointeur de pile d'être sélectionné entre SP\_EL0 et SP\_ELx\\
+		\hline DAIF & Permet l'accès aux bits su masque d'interruption\\
+		\hline
+	\end{tabular}
+
+	\textbf{Groupe timer}\\
+	\begin{tabular}{%
+			|p{0.23\linewidth}|p{0.7\textwidth}|}
+		\hline \textbf{Nom} &  \textbf{Description} \\
+		\hline	CNTFRQ\_EL0 & Rapporte la fréquence du comptage du système. \\
+		%\hline CNTKCTL\_EL1 & \\
+		\hline CNTPCT\_EL0 & Rapporte la valeur de comptage système actuelle. \\
+		\hline CNTP\_CTL\_EL0 &  Registre de contrôle du timer physique EL1\\
+		\hline CNTP\_CVAL\_EL0 & Contient la valeur de comparaison de 64 bits du timer physique EL1\\
+		\hline CNTP\_TVAL\_EL0 & Contient la valeur du timer physique EL1 \\
+		\hline CNTCV & Indique la valeur de comptage actuelle\\
+		\hline 
+	\end{tabular}
+	\newline
+	\newline
+	\newline
+	
+	\textbf{Groupe Exception}\\
+	
+	\begin{tabular}{%
+			|p{0.23\linewidth}|p{0.7\textwidth}|}
+		\hline \textbf{Nom} &  \textbf{Description} \\
+		\hline	SCR\_EL3 & Définit les configurations de l'état de sécurité actuelle\\
+		\hline	ESR\_EL1 & Contient les informations de syndrome pour une exception prise à EL1\\
+		\hline ESR\_EL2 & Contient les informations de syndrome pour une exception prise à EL2\\
+		\hline ESR\_EL3 & Contient les informations de syndrome pour une exception prise à EL3\\
+		\hline ISR\_EL1 & Affiche le statut en attente des interruptions IRQ, FIQ ou SError \\
+		\hline VBAR\_EL1 & Contient l'adresse de base vectorielle pour toute exception prise à EL1\\
+		\hline VBAR\_EL2 & Contient l'adresse de base vectorielle pour toute exception prise à EL2\\
+		\hline VBAR\_EL3 & Contient l'adresse de base vectorielle pour toute exception prise à EL3\\
+		\hline 
+	\end{tabular}
+	\newline
+	\newline
+	\newline
+
+	\textbf{Groupe Spécial}\\
+	
+	\begin{tabular}{%
+			|p{0.23\linewidth}|p{0.7\textwidth}|}
+		\hline \textbf{Nom} &  \textbf{Description} \\
+		\hline	ELR\_EL1 & Contient l'adresse vers laquelle retourner quand une exception est prise à EL1\\
+		\hline ELR\_EL2 & Contient l'adresse vers laquelle retourner quand une exception est prise à EL2\\
+		\hline ELR\_EL3 & Contient l'adresse vers laquelle retourner quand une exception est prise à EL3\\
+		\hline SPSR\_EL1 & Maintenir l'état du processus enregistré lorsqu'une exception se passe à EL1\\
+		\hline SPSR\_EL2 & Maintenir l'état du processus enregistré lorsqu'une exception se passe à EL2\\
+		\hline SPSR\_EL3 & Maintenir l'état du processus enregistré lorsqu'une exception se passe à EL3\\
+		\hline SPSR\_abt & Maintenir l'état du processus enregistré lorsqu'une exception se passe en mode abandon\\
+		\hline SPSR\_fiq & Maintenir l'état du processus enregistré lorsqu'une exception se passe en mode FIQ\\
+		\hline SPSR\_irq & Maintenir l'état du processus enregistré lorsqu'une exception se passe en mode IRQ\\
+		\hline SPSR\_und & Maintenir l'état du processus enregistré lorsqu'une exception se passe en mode non défini\\
+		\hline SP\_EL0 & Contient le pointeur de pile associé à EL0\\
+		\hline SP\_EL1 & Contient le pointeur de pile associé à EL1\\
+		\hline SP\_EL2 & Contient le pointeur de pile associé à EL2\\
+		\hline SP\_EL3 & Contient le pointeur de pile associé à EL3\\	
+		\hline 
+	\end{tabular}
+	\newline
+
+	\subsection{Traitement des donnés}
+	Le format de base des instructions arithmétiques logiques et entières est :\\
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=17cm,height=7cm]{images/chapitre2/alo.png}
+		\caption{Exemple de code C et assembleur armv8.}
+		\label{Types}
+	\end{figure}
+
+	
+	\section{Privilèges et niveaux d'exception}
+	Avant d'expliquer les détails du modèle d'exception Armv8-A, commençons par introduire le concept de privilège. Le logiciel moderne s'attend à être divisé en différents modules, chacun avec un niveau d'accès différent aux ressources système et processeur. Un exemple de ceci est la séparation entre le noyau du système d'exploitation, qui a un niveau élevé d'accès aux ressources systèmes, et les applications utilisateurs, qui ont une capacité plus limitée de configurer le système.\\
+	
+	Le niveau de privilège le plus bas est appelé EL0.
+	Un modèle d'utilisation courant a un code d'application exécuté à EL0, avec un système d'exploitation exécuté à EL1. EL2 est utilisé par un hyperviseur, avec EL3 étant réservé par un micrologiciel de bas niveau et un code de sécurité.
+	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=15cm,height=8cm]{images/chapitre10/exception_model.png}
+		\caption{Niveau d'exception}
+		\label{Types}
+	\end{figure}
+	
+	
+	\section{Les types de privilège}
+	
+	Il existe deux types de privilèges pertinents à ce sujet. Le premier est le privilège dans le système de mémoire, et le second est le privilège du point de vue de l'accès aux ressources du processeur. Les deux sont affectés par le niveau d'exception actuel.
+	
+	\section{Le privilège dans le système de mémoire}
+	
+	Armv8-A implémente un système de mémoire virtuelle, dans lequel une unité de gestion de mémoire (MMU) permet au logiciel d'attribuer des attributs à régions de la mémoire. Ces attributs incluent des autorisations de lecture/écriture, qui peuvent être configurées avec deux degrés de liberté. Cette configuration permet des autorisations d'accès distincts pour les accès privilégiés et non privilégiés.
+	L'accès à la mémoire initié lorsque le processeur s'exécute dans EL0 sera vérifié par rapport aux autorisations d'accès non privilégié. Les accès mémoires depuis EL1, EL2 et EL3 seront vérifiés par rapport aux autorisations d'accès privilégiées.
+	
+	
+	\section{L'accès aux régistres}
+	
+	Les paramètres de configuration des processeurs Armv8-A sont conservés dans une série de registres appelés registres système. La combinaison de paramètres dans les registres système définissent le contexte du processeur courant. L'accès aux registres du système est contrôlé par le niveau d'exception actuel. \\
+	
+	Le nom du registre système indique le niveau d'exception le plus bas à partir duquel ce registre est accessible. Par exemple, TTBR0\_EL1 est le registre qui contient l'adresse de base de la table de traduction utilisée par EL0 et EL1. Ce registre n'est pas accessible à partir de EL0, et toute tentative de le faire entraînera la génération d'une exception.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=15cm,height=6cm]{images/chapitre10/execution_state.png}
+		\caption{Etats d'exécution et niveau d'exécution}
+		\label{Types}
+	\end{figure}
+	
+	
+	
+	\section{Gestion des exceptions dans l'aarch64 armv8-A}
+	Dans le jargon ARM64, l'exception est définie au sens large ; les interruptions sont un type particulier d'exceptions. L'initialisation des exceptions requiert la mise en place de la table vectorielle, la configuration des masques et le routage des exceptions asynchrones.
+	
+	\subsection{Vecteur d'exception}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=15cm,height=10cm]{images/chapitre11/vbar_el1.png}
+		\caption{Structure de la table vectorielle pour EL1 en mémoire}
+		\label{Types}
+	\end{figure}
+	Un vecteur d'exception (ou gestionnaire) est un morceau de code que le processeur exécutera lorsqu'une exception spécifique se produit. " Il s'agirait normalement d'instructions de branchement qui dirigent le noyau vers le gestionnaire d'exceptions complet.\\
+	
+	Une table de vecteurs ou table vectorielle est un tableau de vecteurs d'exception. Chaque niveau d'exception (EL) a sa propre table vectorielle. le noyau définit 16 gestionnaires d'exceptions : 4 types (SError, fiq, irq, sync) avec chacun 4 états d'exécution (EL1t, EL1h, EL0\_64, EL0\_32):\\
+
+	\textbf{Les types d'exceptions:}\\
+	
+	\textbf{Exception synchrone:} Les exceptions de ce type sont toujours causées par l'instruction en cours d'exécution. Par exemple, vous pouvez utiliser une instruction \textbf{str} pour stocker certaines données dans un emplacement mémoire inexistant. Dans ce cas, une exception synchrone est générée. Les exceptions synchrones peuvent également être utilisées pour générer une "interruption logicielle". L'interruption logicielle est une exception synchrone qui est générée volontairement par une instruction. Cette technique est employée pour implémenter les appels systèmes.\\
+
+	\textbf{Exceptions asynchrones ou (IRQ):} Ce sont des interruptions normales. Elles sont toujours asynchrones, ce qui signifie qu'ils n'ont rien à voir avec l'instruction en cours d'exécution. Contrairement aux exceptions synchrones, elles ne sont toujours pas générées par le processeur lui-même, mais par du matériel externe.\\
+
+	\textbf{FIQ (Fast Interrupt Request):} Ce type d'exception est appelé "interruption rapide" et existe uniquement dans le but de hiérarchiser les exceptions. Il est possible de configurer certaines interruptions comme "normales" et d'autres comme "rapides". Les interruptions rapides seront signalées en premier et seront gérées par un gestionnaire d'exceptions distinct. Linux n'utilise pas d'interruptions rapides, nous ne les avons pas aussi implémentés.\\
+
+	\textbf{SError (System Error):}  Comme IRQ et FIQ, les exceptions SError sont asynchrones et sont générées par du matériel externe. Contrairement à IRQ et FIQ, SError indique toujours une condition d'erreur.
+
+	\subsection{Table vectorielle}
+	
+	Il y a des tables vectorielles dédiées pour chaque niveau d'exception.
+	\begin{itemize}
+		\item VBAR\_EL3
+		\item VBAR\_EL2
+		\item  VBAR\_EL1
+	\end{itemize}
+	
+	La table vectorielle de AArch64 est différente de celle de AArch32. La table vectorielle dans le mode AArch64 contient 16 entrées. Chaque entrée a une taille de 128 bytes et contient au plus 32 instructions.
+	Les tables vectorielles doivent être placées à une adresse alignée sur 2 Ko. Les adresses sont précisées en initialisant les registres VBAR\_ELn.
+	
+	La figure suivante montre comment la table vectorielle est structurée.\\
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=15cm,height=8cm]{images/chapitre11/vbar_eln.png}
+		\caption{Structure de la table vectorielle}
+		\label{Types}
+	\end{figure}
+	
+	\section{Activation des exceptions asynchrones}
+	
+	Les exceptions asynchrones sont SError, IRQ et FIQ. Ils sont masqués par défaut après réinitialisation. Par conséquent, si SError, IRQ et FIQ doivent être pris, les règles de routage doivent être définies et le masque doit être nettoyé.
+	Pour activer les interruptions, nous devons également initialiser l'interruption globale pour délivrer l'interruption au processeur.
+	
+	\section{Routage des exceptions asynchrones}
+	
+	Le routage d'exception asynchrone détermine quel niveau d'exception est utilisé pour gérer une
+	exception asynchrone.\\
+	Pour router une exception asynchrone vers EL3, nous devons définir SCR\_EL3.{EA,IRQ,FIQ}.
+	La figure ci-dessous montre comment acheminer SError, IRQ et FIQ vers EL3.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=15cm,height=4cm]{images/chapitre11/routing_exception_el3.png}
+		\caption{Routage des exceptions dans EL3}
+		\label{Types}
+	\end{figure}
+	
+	Si une interruption n'est pas acheminée vers EL3 ou EL2, elle est acheminée vers EL1 par défaut.
+	
+	\section{Temporisateur générique}
+
+	Le temporisateur générique (Generic Timer) fournit un cadre de temporisateur standardisé pour les cœurs d'armement. La minuterie générique comprend un compteur système et un ensemble de temporisateurs par cœur, comme illustré sur la figure suivante:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=10cm,height=8cm]{images/chapitre2/model_generic_timer.png}
+		\caption{Timer générique de l'ARM}
+		\label{Types}
+	\end{figure}
+	
+	Chaque cœur a un ensemble de minuteries. Ces minuteries sont des comparateurs, qui se comparent au  compteur générique qui est fourni
+	par le compteur système. L'OS peut configurer des temporisateurs pour générer des interruptions ou des événements dans les points de consigne à l'avenir. L'OS peut
+	utilisez également le compteur générique pour ajouter des horodatages, car il donne un point de référence commun pour tous les cœurs.
+
+	\subsection{Les minuteries du processeur}
+	
+	Le nombre de minuteurs fournis par un cœur dépend des extensions implémentées, comme indiqué dans le tableau suivant:
+	
+		\begin{figure}[H]
+		\begin{tabular}{%
+			|p{0.4\linewidth}|p{0.5\textwidth}|}
+		\hline \textbf{Nom du Timer} &  \textbf{Quand la minuterie est-elle présente ?} \\
+		\hline Temporisateur physique EL1 & Toujours\\
+		\hline Temporisateur virtuel EL1 & Toujours\\
+		\hline Temporisateur physique non-sécurisé EL2 & Met en oeuvre EL2\\
+		\hline Temporisateur virtuel non-sécurisé EL2 & Met en oeuvre ARMv8.1-VHE\\
+		\hline Temporisateur physique EL3 & Met en oeuvre EL3\\
+		\hline Temporisateur physique sécurisé EL2 & Met en oeuvre ARMv8.4-SecEL2\\
+		\hline Temporisateur virtuel sécurisé EL2 & Met en oeuvre ARMv8.4-SecEL2\\
+		\hline	
+	\end{tabular}
+		\caption{Minuteurs par niveau}
+		\label{Types}
+	\end{figure}
+	
+	
+	\section{Les régistres du temporisateur}
+		Chaque minuterie possède les trois registres système suivants :
+	\begin{figure}[H]
+		\begin{tabular}{%
+			|p{0.4\linewidth}|p{0.5\textwidth}|}
+		\hline \textbf{Registre} &  \textbf{Fonction} \\
+		\hline <timer>\_CTL\_EL<x> & Régistre de contrôle\\
+		\hline <timer>\_CVAL\_EL<x> & Valeur du comparateur\\
+		\hline <timer>\_TVAL\_EL<x> & Valeur de la minuterie\\
+		\hline	
+		\end{tabular}
+		\caption{Régistres de minuterie}
+		\label{Types}
+	\end{figure}
+
+	Dans le nom du registre, <timer> identifie le timer auquel on accède. Le tableau suivant montre les valeurs possibles :
+	
+		\begin{figure}[H]
+		\begin{tabular}{%
+			|p{0.4\linewidth}|p{0.2\textwidth}| p{0.2\textwidth}|}
+		\hline \textbf{Timer} & \ \textbf{Préfixe du régistre} & EL<x> \\
+		\hline Temporisateur phsyque EL1 & CNTP & EL0\\
+		\hline Temporisateur virtuel EL1 & CNTV & EL0\\
+		\hline Temporisateur physique EL2 non-sécurisé & CNTHP &  EL2\\
+		\hline Temporisateur virtuel El2 non-sécurisé & CNTHV & EL2\\
+		\hline Temporisateur physique EL3 & CNTPS & EL1\\
+		\hline Temporisateur physique EL2 sécurisé	& CNTHPS & EL2\\
+		\hline Temporisateur virtuel EL2 sécurisé & CNTHVS & EL2\\
+		\hline	
+	\end{tabular}
+		\caption{Temporisateur pour chaque niveau d'exception}
+		\label{Types}
+	\end{figure}
+	
+	CNTP\_CVAL\_EL0 est le registre comparateur du temporisateur physique EL1.
+	
+	\subsection{Configuration des temporisateurs}
+	
+	Il existe deux manières de configurer un temporisateur, soit en utilisant le registre du comparateur (CVAL), soit en utilisant le registre du temporisateur (TVAL).
+	Le registre comparateur, CVAL, est un registre de 64 bits. L'OS écrit une valeur dans ce registre et le temporisateur se déclenche lorsque le
+	compteur atteint ou dépasse cette valeur, comme vous pouvez le voir ici : \\
+	Condition de minuterie satisfaite : CVAL <= nombre  de ticks systèmes\\
+	Le registre temporisateur, TVAL, est un registre de 32 bits. Lorsque l'OS écrit TVAL, le processeur lit le nombre actuel du système
+	en interne, ajoute la valeur écrite, puis remplit CVAL :\\
+	CVAL = TVAL + Compteur système actuel \\
+	Condition de minuterie satisfaite : CVAL <= nombre de ticks systèmes \\
+	TVAL et CVAL donnent à l'OS deux modèles différents d'utilisation de la minuterie. Si l'OS a besoin d'un événement de minuterie dans X ticks de
+	l'horloge, le logiciel peut écrire X sur TVAL. \\
+	Alternativement, si l'OS veut un événement lorsque le nombre de ticks système atteint Y, l'OS peut
+	écrire Y dans CVAL.
+	
+	TVAL et CVAL sont des manières différentes de programmer la même minuterie. Ce ne sont pas deux minuteries différentes.
+	
+	\section{Le Compilateur croisé}
+	\subsection{La compilation croisée}
+	La compilation croisée ou «cross-compilation» en anglais permet de créer des exécutables depuis une certaine architecture pour une autre. En règle générale, un compilateur croisé est un compilateur qui s’exécute sur la plateforme A (l’hôte),mais génère des exécutables pour la plateforme B (la cible). Ces deux plates-formes peuvent (mais n’ont pas besoin de le faire) différer en ce qui concerne le processeur, le système d’exploitation et/ou le format exécutable. Dans notre cas, la plate-forme hôte est notre système d’exploitation actuel (Ubuntu/Linux x86\_64) et la plate-forme cible est le système d’exploitation que nous sommes sur le point de créer (sur une Architecture ARM 64 bit(Aarch64)). Il est important de réaliser que ces deux plates-formes ne sont pas les mêmes; le système d’exploitation que nous développons sera toujours différent du système d’exploitation que nous utilisons actuellement. C’est pourquoi nous devons d’abord avoir un compilateur croisé, nous rencontrerons très certainement des problèmes dans le cas contraire.
+	
+	Nous devons utiliser un compilateur croisé, sauf si nous développons sur notre propre système d’exploitation. Ce qui n'est pas encore possible pour l'instant. Le compilateur doit connaître la plate-forme cible correcte (CPU, système d’exploitation), sinon nous rencontrerons des problèmes. Si nous utilisons le compilateur fourni avec notre système(le GCC natif), le compilateur ne saura pas qu’il compile entièrement autre chose. Certains didacticiels suggèrent d’utiliser notre compilateur système et de passer de nombreuses options problématiques au compilateur. Cela nous donnera certainement beaucoup de problèmes à l’avenir et la solution est d'utiliser carrément un compilateur croisé. Nous avons opté pour la chaîne \textbf{aarch64-gnu-linux}.
+	
+	\subsection{La chaîne de compilation aarch64-gnu-linux}
+	Pour la génération de l'image de notre OS, nous utilisons la chaîne de compilation aarch66-gnu-linux. Dans cette chaîne nous avons le compilateur: \textbf{aarch64-gnu-linux-gcc}, permettant la compilation des fichiers sources en C et des fichiers sources Assembleur. Nous avons aussi le compilateur \textbf{aarch64-gnu-linux-as} pour les sources en assembleur mais nous ne l'utilisons pas. Ce compilateur génère des fichiers objets que nous passons à l'outils d'édition de lien \textbf{aarch64-gnu-linux-ld} pour l'édition de lien. Nous utilisions enfin l'outils \textbf{aarch64-gnu-linux-objcopy} pour la génération de l'image de notre OS.
+	
+	\subsection{Les étapes de la compilation}
+	La génération de l'image de notre OS passe bel et bien par des étapes. Qui sont :
+	\subsubsection{Compilation des sources}
+	L'outils que nous utilisons dans cette premier étape est le \textbf{aarch64-gnu-linux-gcc}. Ce compilateur transforme les codes sources en C ou en Assembleur en code objet prêt à utiliser dans l'édition de lien.\\\\
+	
+	\textbf{Les options de compilations}:\\
+	\textit{\textbf{COPS = -Wall -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only}}\\
+	\textit{\textbf{ASMOPS = -Iinclude  -g}}\\
+	
+	\textbf{COPS} et \textbf{ASMOPS} sont des variables contenant les options que nous passons au compilateur lors de la compilation des sources C et Assembleur respectivement.\\
+	
+	\textbf{-Wall:} Afficher tous les avertissements. Une bonne pratique.\\
+	
+	\textbf{-nostdlib:} Ne pas utiliser la bibliothèque standard C. La plupart des appels dans la bibliothèque standard C finissent par interagir avec le système d’exploitation. Nous écrivons un programme bare-metal, et nous n’avons pas de système d’exploitation sous-jacent, donc la bibliothèque standard C ne va pas fonctionner pour nous de toute façon.\\
+	
+	\textbf{-nostartfiles:}Ne pas utiliser de fichiers de démarrage standard. Les fichiers de démarrage sont chargés de définir un pointeur de pile initial, d’insérer les données statiques et de passer au point d’entrée principal. Nous allons faire tout cela par nous-mêmes.\\
+	
+	\textbf{-ffreestanding:} l'environment freestanding est un environnement dans lequel la bibliothèque standard n’existe peut-être pas et le démarrage du programme n’est pas nécessairement principal. L’option indique au compilateur de ne pas supposer que les fonctions standard ont leur définition habituelle\\
+	
+	\textbf{-Iinclude:}  Recherchez les fichiers d’en-tête dans le dossier \textbf{ include}.\\
+	
+	\textbf{-mgeneral-regs-only:} Utiliser uniquement des registres à usage général. Les processeurs ARM ont également des \textbf{registres NEON}. Nous ne voulons pas que le compilateur les utilise car ils ajoutent une complexité supplémentaire (puisque, par exemple, nous devrons stocker les registres pendant un changement de contexte).\\
+	
+	\textbf{-g:} Inclure les informations de débogage dans le binaire ELF résultant.\\
+	
+	\textbf{-O0:} Désactivez toute optimisation du compilateur. Pour faciliter le débogage.\\
+	
+	\subsubsection{L'édition de lien et génération du binaire ELF et du fichier image}
+	Apres compilation des sources, nous devons passer à l'édition de lien avec l'outil \textbf{aarch64-gnu-linux-ld} et un script de linkage (\textit{\textbf{linker.ld}}).\\ 
+	Un script de l’éditeur de liens décrit comment les sections des fichiers objet d’entrée (\textbf{.c} et \textbf{.S}) doivent être mappées dans le fichier de sortie (\textbf{kernel8.elf}) et contrôle également les adresses de tous les symboles du programme (par exemple, les fonctions et les variables).\\
+	
+	Le fichier \textbf{kernel8.elf}, le résultat de notre construction, contient tout le code, les données et les informations de débogage. Souvent, pour exécuter un programme ELF dans l’espace utilisateur, il devrait y avoir un chargeur pour l'analyser, charger le code et les données aux emplacements de mémoire désignés, etc. Pour notre expérience de noyau, nous n’avons pas un tel chargeur pour le noyau lui-même.  il contrôle également les adresses de tous les symboles du programme (par exemple, les fonctions et les variables).\\
+	
+	La prochaine étape consiste à faire appel à l'outil \textbf{aarch64-gnu-linux-objcopy} et générer le \textbf{kernel8.img}, l'image du noyau à partir du binaire \textbf{kernel8.elf}. Cette image contient les données et les instructions brutes extraites du binaire \textbf{kernel8.elf} C'est cette image qui est chargée en mémoire. 
+	
+	\textbf{aarch64-gnu-linux-objcopy} peut être utilisé pour générer un fichier image en utilisant une cible binaire (par exemple, avec l'option -O binary). Lors de la génération de notre fichier image, il produira essentiellement un vidage de mémoire du contenu du fichier binaire d’entrée.
+	
+	
+	
+	\chapter{Le Bootstraping sur le Pi}
+	\section{Introduction}
+	Dans ce premier chapitre, nous allons vous présentez comment le Pi charge finalement le noyau de l'OS.
+	
+	\section{La carte SD}
+	
+	Tirant ses origines de l'informatique embarquée, la puce BCM2835, qui est au coeur de Raspberry Pi ne possède pas, comme sur les PCs un menu du BIOS (Basic Input/Output System) où l'on peut configurer différents paramètres système de bas niveau. Au lieu de cela, il existe des fichiers textes contenant des chaînes de configurations qui sont chargés par la puce au démarrage du Pi. Au nombre de ces fichiers essentiels, nous avons : config.txt, cmdline.txt, start.elf, fixup.dat, bootcode.bin .
+	 
+			\subsection{Paramètres du Pi: config.txt}
+				
+				Le matériel du Pi est contôlé par les paramètres contenus dans un fichier nommé config.txt, qui se trouve dans le répertoire /boot.Ce fichier indique au Pi comment configurer ses différentes entrées et sorties, et à quelle vitesse la puce BCM283x et son module de mémoire doivent tourner.\\
+				
+				Le fichier config.txt peut contrôler presque tous les aspects matériels du Pi. Le fichier est lu uniquement au démarrage du système. Toues les modifications apportées pendant que le Pi est en cours d'exécution n'entreront en vigueur qu'une fois que le système aura redémarré. 
+				
+				Voici quelques paramètres que l'on peut configuré dans ce fichier:
+				\begin{itemize}
+					\item overscan\_left ( right, top, bottom) déplace l'image selon la direction, d'un certain nombre de pixel.
+						\item framebuffer\_width(height, depth, igore\_alpha) est une valeur exprimée en pixels, qui peut soir changer la largeur de la console, soit affecter la taille de la console, soit contrôler le nombre de couleurs de la console en bits par pixel.\\
+					\item hdmi\_mode(drive, force\_hotplug, group) définit les divers paramètres liés à la sortie HDMI.\\
+					\item init\_uart\_baud : vitesse de la console série en bits par seconde. La valeur par défaut est 115200, mais des valeurs plus faibles peuvent améliorer la connexion si le Pi est utilisé avec un terminal série assez ancien.\\
+					\item enable\_uart: par défaut le Raspberry Pi 3 n'a pas de console série active. Pour l'activer, placez un 1 après cette option; votre Pi 3 bénéficiera ainsi d'une console série, comme les précédents modèles de Pi.
+				\end{itemize}
+			
+			\subsection{Paramètres de l'OS: cmdline.txt}
+				Ce fichier cmdline.txt contient ce qu'on appelle la ligne de comande du noyau, qui représente les options passées au noyau de l'OS au démarrage du Pi.
+				Dans un ordinateur classique tournant sur linux, ces options sont généralement transmises au noyau par le biais d'un outil appelé bootloader, qui possède son propre fichier de configuration. Sur le Pi, les options sont simplement saisies directement dans le fichier cmdline.txt pour être lues par le Pi au démarrage.
+				Presque n’importe quelle option du noyau prise en charge par Linux peut être entrée dans le fichier cmdline.txt pour modifier des choses qui vont de l’apparence de la console jusqu’au chargement du système de fichiers racine. À titre d’exemple, voici le fichier cmdline.txt de la distribution Raspbian, qui doit être écrit sous la forme d’une seule ligne continue :\\
+				dwc\_otg.lpm\_enable=0 console=serial0,115200 console=tty1 root=/dev/mmcblk0p2
+				rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait
+				\newline
+				L’option root indique au noyau Linux où il peut trouver le système de fichiers
+				racine, qui contient tous les fichiers et les répertoires nécessaires pour le fonc-
+				tionnement du système. Dans le cas de la distribution Raspbian par défaut, lors de
+				l’installation à partir de l’image officielle, ce système de fichiers racine se trouve
+				sur la deuxième partition de la carte SD, dans le répertoire mmcblk0p2.\\
+				 Le paramètre rootwait indique au noyau qu’il ne devrait pas essayer de démarrer le système tant que le dispositif contenant le système de fichiers racine n’est pas disponible. Sans cette option, le Pi peut se bloquer alors qu’il commence à démarrer si une carte SD relativement lente n’est pas encore prête.
+				 
+ 			\subsection{Le fichier start.elf}
+ 				C'est le firmware Pi.
+ 			
+ 			\subsection{Le fichier fixup.dat}
+ 				Ce fichier de données contient des informations importantes relatives au matériel.
+ 			\subsection{Le fichier bootcode.bin}
+ 		C'est lui qui est chargé en premier, exécuté sur le GPU( pas nécessairement sur pi 4 car ce modèle a bootcode.bin dans une ROM).
+		\section{Le bootstraping sur le Pi}
+			Lorsque le Pi s'allume, le processeur ARM est arrêté et le processeur graphique fonctionne.\\
+		
+		Seul le GPU est activé, l'unité de traitement étant à l'arrêt. La SDRAM est elle aussi désactivée. Le socle contient une ROM dans laquelle le fabricant a enregistré un programme faisant partie de la chaîne de boot.\\
+		Ce programme est le premier de la chaîne de boot Il est inaccessible par l'utilisateur et n'est donc pas modifiable. GPU exécute ce premier programme dont le seul rôle est d'accéder à la partition FAT de la Card SD pour charger le fichier bootcode.bin.\\
+		Le fichier bootcode.bin est chargé en mémoire cache L2. La SDRAM n'est toujours pas activée. C'est la mémoire cache L2 du GPU qui est utilisé pour le chargement.\\
+		Le GPU exécute le fichier bootcode.bin. Le but est de récupérer le programme start.elf, qui se situe sur la carte SD. Le GPU, sous les ordres de bootcode.bin, active la SDRAM et transfère une copie de start.elf. Une fois start.elf chargé en mémoire, bootcode.bin lui passe le relais.\\
+		Le GPU exécute maintenant son firmware. "start.elf" répartit la mémoire entre le GPU et le CPU ARM, en fonction des paramètres de configuration dans le fichier config.txt.\\
+		Après mise en place des zones mémoires, le programme start.elf transfère l'image du noyau (kernel.img) dans la partie basse de la mémoire, zone réservée au CPU ARM. Il lit ensuite le fichier cmdline.txt qui contient les arguments passés au noyau lors de son exécution.\\
+		Le programme start.elf va encore réveiller le CPU ARM et laissé la main à ce dernier.\\
+		Le processeur ARM démarre et exécute l'image du noyau à une adresse bien spécifique.
+		
+		
+	%	\section{Les étapes de la compilation de l'OS}
+	
+	
+
+\chapter{Architecture et implémentation de l'OS}
+
+\section{Modélisation}
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm,height=6cm]{images/chapitre4/architecture_os.png}
+	\caption{Schéma global de l'architecture de l'os implémenté}
+	\label{Types}
+\end{figure}
+
+\section{Hardware}
+
+Dans cette partie de l'OS, nous implémentons les fonctionnalités essentiels d'un OS, à savoir:
+\begin{itemize}
+	\item le contrôleur d'interruption: nous configurons les périphériques concerné afin de router les interruptions au niveau d'exception appropriés.
+%	\item allocateur de mémoire minimaliste: nous allouons quelques octets de mémoire pour les tâches.
+	\item l'ordonnanceur : il s'agit de la partie du noyau qui planifie les tâches
+\end{itemize}
+
+\subsection{Le contrôleur d'interruption}
+\textbf{Vecteurs d'exception, tables, etc. (entry.S)}\\
+La figure ci-dessous montre comment la table vectorielle est définie.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm,height=13cm]{images/chapitre4/vectable.png}
+	\caption{Table vectorielle}
+	\label{Types}
+\end{figure}
+
+La table vectorielle se compose de 16 définitions de ventry:\\
+\begin{lstlisting}
+	.align	11
+	.globl vectors 
+	vectors:
+		ventry	sync_invalid_el1t			// Synchronous EL1t
+		ventry	irq_invalid_el1t			// IRQ EL1t
+		ventry	fiq_invalid_el1t			// FIQ EL1t
+		ventry	error_invalid_el1t			// Error EL1t
+\end{lstlisting}
+La macro ventry est utilisée pour créer des entrées dans la table vectorielle.\\
+\begin{lstlisting}
+	.macro    ventry    label
+    .align    7
+    b    \label
+    .endm
+\end{lstlisting}
+
+Nous ne gérons les exceptions directement à l'intérieur du vecteur d'exception. Nous faisons de chaque vecteur une instruction de branchement ( b 	\label) qui saute à une étiquette fournie pour la macro en tant qu'argument label.\\
+
+Nous en avons besoin .align 7 car tous les vecteurs d'exception doivent être espacés d' 0x80 octets (2<<7) les uns par rapport aux autres.\\
+
+\textbf{Faire prendre conscience au CPU de la table vectorielle (irq.S)}\\
+Nous avons préparé la table vectorielle, mais le processeur ne sait pas où elle se trouve et ne peut donc pas l'utiliser. Pour que la gestion des exceptions fonctionne, nous devons définir vbar\_el1(Vector Base Address Register) sur l'adresse de la table vectorielle.\\
+
+\begin{lstlisting}
+	.globl irq_vector_init
+	irq_vector_init:
+    	adr    x0, vectors        
+    	msr    vbar_el1, x0       
+    	ret
+\end{lstlisting}
+
+\textbf{Un gestionnaire simple pour les exceptions inattendues}\\
+Dans cette expérience, nous nous intéressons uniquement à la gestion des IRQ partir de EL1h. Or notre noyau définit les 16 gestionnaires pour EL1. C'est pour faciliter la compréhension: nous voulons imprimer un message significatif au cas où notre noyau déclencherait d'autres exceptions en raison de nos erreurs de programmation.\\
+
+Nous nommons tous les gestionnaires qui ne sont censés être déclenchés avec un suffixe invalid. Nous implémentons ces gestionnaires à l'aide d'une macro handle\_invalid\_entry :\\
+\begin{lstlisting}
+    .macro handle_invalid_entry type
+    kernel_entry
+    mov    x0, #\type
+    mrs    x1, esr_el1
+    mrs    x2, elr_el1
+    bl    show_invalid_entry_message
+    b    err_hang
+    .endm
+\end{lstlisting}
+
+La première ligne invoque une macro kernel\_entry qui correspond aux premières instructions que le noyau doit exécuter pour gérer une exception/interruption.\\
+
+Ensuite, nous appelons show\_invalid\_entry\_message() et préparons 3 arguments pour cela. Les arguments sont passés dans 3 registres : x0, x1 et x2.\\
+
+x0 : le type d'exception. La valeur provient de l'argument de la macro. Il peut prendre l'une de ces valeurs définies par notre code noyau. Il nous indique exactement quel gestionnaire d'exceptions a été exécuté.\\
+x1 : informations sur les causes de l'exception. La valeur vient du registre esr\_el1. Remarque : dans cette expérience, notre noyau s'exécute à EL1 et lorsqu'une interruption se produit, elle est gérée à EL1.\\
+x2 : l'adresse de l'instruction en cours d'exécution lorsque l'exception se produit. La valeur provient de elr\_el1. Pour les exceptions synchrones, c'est l'instruction qui provoque l'exception ; pour irqs (asynchrone), il s'agit de l'instruction terminée juste avant que irq ne se produise.Ce registre détient l'adresse à laquelle retourner.\\
+Le code appelle ensuite la show\_invalid\_entry\_message fonction, qui imprime des informations textuelles à UART. En revenant de cette fonction, le code s'exécute dans une boucle infinie car nous n'avons rien d'autre à faire.\\
+
+\textbf{gestion des exceptions et sortie}\\
+Pour gérer les exceptions valides (interruptions du timer dans notre cas), le noyau doit sauvegarder et restaurer le contexte de l'exécution "normale", c'est-à-dire passer de l'exécution normale au gestionnaire d'exceptions, l'exécuter et reprendre l'exécution interrompue. En d'autres termes, après le gestionnaire d'exceptions, nous voulons que tous les registres à usage général aient les mêmes valeurs qu'avant la génération de l'exception.\\
+\begin{lstlisting}
+	el1_irq:
+		kernel_entry 
+		bl	handle_irq
+		kernel_exit
+\end{lstlisting}
+
+Retour à kernel\_entry. C'est la première chose à faire dans la gestion d'une exception : sauvegarder l'état du processeur, notamment les registres x0 - x30, dans la pile. Pour ce faire, il soustrait d'abord à sp la taille du total des registres stockés (\#S\_FRAME\_SIZE), puis remplit l'espace de la pile. Ensuite nous appelons la fonction handle\_irq.\\
+
+kernel\_exit doit être appelé comme la dernière chose dans un gestionnaire d'exceptions. kernel\_exit restaure l'état du CPU en copiant les valeurs de x0 - x30. L'ordre reflète exactement celui de kernel\_entry sinon nous verrons des valeurs de registre erronées. kernel\_exit Exécute enfin eret, qui revient à l'exécution normale.
+\begin{lstlisting}
+	.macro	kernel_entry
+	sub	sp, sp, #S_FRAME_SIZE
+	stp	x0, x1, [sp, #16 * 0]
+	stp	x2, x3, [sp, #16 * 1]
+	stp	x4, x5, [sp, #16 * 2]
+	stp	x6, x7, [sp, #16 * 3]
+	stp	x8, x9, [sp, #16 * 4]
+	stp	x10, x11, [sp, #16 * 5]
+	stp	x12, x13, [sp, #16 * 6]
+	stp	x14, x15, [sp, #16 * 7]
+	stp	x16, x17, [sp, #16 * 8]
+	stp	x18, x19, [sp, #16 * 9]
+	stp	x20, x21, [sp, #16 * 10]
+	stp	x22, x23, [sp, #16 * 11]
+	stp	x24, x25, [sp, #16 * 12]
+	stp	x26, x27, [sp, #16 * 13]
+	stp	x28, x29, [sp, #16 * 14]
+	str	x30, [sp, #16 * 15] 
+	.endm
+
+	.macro	kernel_exit
+	ldp	x0, x1, [sp, #16 * 0]
+	ldp	x2, x3, [sp, #16 * 1]
+	ldp	x4, x5, [sp, #16 * 2]
+	ldp	x6, x7, [sp, #16 * 3]
+	ldp	x8, x9, [sp, #16 * 4]
+	ldp	x10, x11, [sp, #16 * 5]
+	ldp	x12, x13, [sp, #16 * 6]
+	ldp	x14, x15, [sp, #16 * 7]
+	ldp	x16, x17, [sp, #16 * 8]
+	ldp	x18, x19, [sp, #16 * 9]
+	ldp	x20, x21, [sp, #16 * 10]
+	ldp	x22, x23, [sp, #16 * 11]
+	ldp	x24, x25, [sp, #16 * 12]
+	ldp	x26, x27, [sp, #16 * 13]
+	ldp	x28, x29, [sp, #16 * 14]
+	ldr	x30, [sp, #16 * 15] 
+	add	sp, sp, #S_FRAME_SIZE		
+	eret
+	.endm
+\end{lstlisting}
+
+\textbf{Configuration du contrôleur d'interruption}\\
+Nous ne sommes intéressés que par les interruptions de minuterie. Le manuel du SoC, page 113 indique que les irq \#1 et \#3 proviennent de la minuterie système. Ces sources irq appartiennent au groupe irq 1, qui peut être activé à l'aide de ENABLE\_IRQS\_1 . enable\_interrupt\_controller() Active donc l' IRQ de la minuterie système au numero 1 :
+\begin{lstlisting}
+	void enable_interrupt_controller()
+	{
+    	put32(ENABLE_IRQS_1, SYSTEM_TIMER_IRQ_1);
+	}
+\end{lstlisting}
+
+\textbf{Masquage/démasquage des interruptions}\\
+De temps en temps, le noyau doit masquer/démasquer TOUTES les interruptions, afin que certaines régions de code critiques ne soient jamais interrompues. Par exemple, que se passe-t-il si une interruption se produit en plein milieu de la kernel\_entry macro ? L'état du processeur serait corrompu.\\
+Les deux fonctions suivantes (irq.S) masquent et démasquent les interruptions.
+\begin{lstlisting}
+	.globl enable_irq
+	enable_irq:
+    	msr    daifclr, #2
+    	ret
+
+	.globl disable_irq
+	disable_irq:
+    	msr    daifset, #2
+        ret
+\end{lstlisting}
+
+\textbf{Le gestionnaire d'IRQ}\\
+Nous avons un seul gestionnaire d'exceptions commun pour gérer tous les IRQs. Ce gestionnaire est défini ici: 
+\begin{lstlisting}
+	void handle_irq(void)
+	{
+    	unsigned int irq = get32(IRQ_PENDING_1);
+    	switch (irq) {
+        	case (SYSTEM_TIMER_IRQ_1):
+            	handle_timer_irq();
+            	break;
+        	default:
+            	printf("Unknown pending irq: %x\r\n", irq);
+    	}
+	}
+\end{lstlisting}
+
+\subsection{Le Scheduler}
+Ici, nous implémentons un ordonnancement où les tâches se succèdent selon l'ordre d'arrivé. Notre OS est mono-tâche, et nous avons opté pour l'ordonnancement avec l'algorithme FIFO.\\
+
+\section{Les composants}
+Nous avons opté pour un développement à base de composants. Les composant ou modules sont les périphériques configurés et disponibles pour construire une application.\\
+\begin{itemize}
+	\item gpio: pour interagir avec les 40 broches et ainsi leur attribuer des fonctions.\\
+	\item mini\_uart : pour interagir avec la console série à travers les broches GPIOs.\\
+	\item led: ce composant nous sert à allumer des leds.\\
+	\item timer: il s'agit d'un composant qui permet de définir de manipuler le temps et est utilisé par d'autres composants(led)
+\end{itemize}
+
+\subsection{GPIO}
+\subsubsection{Le mappage d'adresse}
+Pour configurer ce module, Dans le fichier d'entête du périphérique GPIO, nous avons commencer à créer des macros au nom des registres du GPIO et nous les avons mappés avec leur adresse telle fournie dans le manuel du processeur après l'ajout de l'adresse de base du périphérique. Nous en avons fait de même pour les pins.
+
+\begin{lstlisting}
+//GPIO address maping
+
+#define     GPIO_BASE       (PERIPHERAL_BASE + 0x200000)
+
+#define     GPFSEL0         (PERIPHERAL_ABSE + 0x200000)
+#define     GPFSEL1         (PERIPHERAL_BASE + 0x200004)
+#define     GPFSEL2         (PERIPHERAL_BASE + 0x200008)
+#define     GPFSEL3         (PERIPHERAL_BASE + 0x20000C)
+#define     GPFSEL4         (PERIPHERAL_BASE + 0x200010)
+#define     GPFSEL5         (PERIPHERAL_BASE + 0x200014)
+
+#define     GPSET0          (PERIPHERAL_BASE + 0x20001C)
+#define     GPSET1          (PERIPHERAL_BASE + 0x200020) 
+
+...
+
+//GPIO pin mapping
+#define     GPIO0           0
+#define     GPIO1           1
+#define     GPIO2           2
+#define     GPIO3           3
+#define     GPIO4           4
+#define     GPIO5           5
+#define     GPIO6           6
+#define     GPIO7           7
+#define     GPIO8           8
+#define     GPIO9           9
+
+\end{lstlisting}
+
+Notons que la configuration de tous nos pilote commencera toujours par cette étape.\\
+
+\begin{lstlisting}
+
+unsigned int gpio_call(unsigned int pin, unsigned int value, unsigned int base, unsigned int field_size, unsigned int field_max) 
+{
+    unsigned int field_mask = (1 << field_size) - 1;
+  
+    if (pin > field_max) 
+        return 0;
+    
+    if (value > field_mask) 
+        return 0; 
+
+    unsigned int num_fields = 32 / field_size;
+    unsigned int reg = base + ((pin / num_fields) * 4);
+    unsigned int shift = (pin % num_fields) * field_size;
+
+    unsigned int curval = get32(reg);
+    curval &= ~(field_mask << shift);
+    curval |= value << shift;
+    put32(reg, curval);
+
+    return 1;
+}
+
+\end{lstlisting}
+Cette fonction prend en argument le pin à configuer, la valeur pour la configuration, l'adresse de base pour la configuration, le nombre de bit nécessaire pour la configuration permettant de définir le mask, le nombre de pin maximal.\\
+Après vérification de la cohérence des valeurs entrées, on accède au registre dans lequel il nous faut écrire et on écrit à l'intérieur la valeur de configuration après avoir atteint les champs du registre dans lesquels il faut écrire.\\
+\textbf{reg} contient l'adresse du registre dans lequel il faut écrire. Il est obtenu à partir de l'adresse de base du type de registre auquel il faut accéder plus un décalage approprié.\\
+\textbf{shift} contient le nombre de décalage qu'il faut pour atteindre le champ du registre dans lequel il faut écrire en fonction du pin.\\
+
+Nous avons définie ensuite d'autres fonctions qui s'appuie sur celle précédente 
+
+\subsubsection{Les fonctions de configuration}
+La fonction de base, sur laquelle repose toute les opérations de configuration du GPIO est la fonction \textbf{gpio\_call}.
+Nous avons les fonctions suivantes:
+\begin{itemize} 
+	\item La fonction \textbf{gpio\_configure} permet d'attribuer une fonction à un pin ou définie un pin comme une broche d'entré ou de sortie.\\
+	\item Les fonctions \textbf{gpio\_set} et \textbf{gpio\_clear} permet d'activer ou désactiver un pin configuré comme sortie. \\
+\end{itemize}
+
+Les autres fonctions sont présentes dans le fichier source du module GPIO.
+
+\subsection{Mini UART}
+Le mini UART est un périphérique auxiliaire du Pi. Pour l'utiliser il faut d'abord l'activer et régler la fréquence de l'horloge du processeur.Après le mappage des registres, nous avons fournit une fonction qui initialise l'UART et d'autres fonctions qui permettent de transmettre ou de recevoir un caractère depuis les ports séries.\\
+\begin{lstlisting}
+void uart_init ( void )
+{
+	//configure alternative function 5 on GPIO14 and GPIO15 pins. 
+	gpio_clear(14, 1);
+	gpio_pin_configure(14, 2);
+
+	gpio_clear(15, 1);
+	gpio_pin_configure(15, 2);
+
+	//configure pull none on GPIO14 and 15 pins
+	put32(GPPUD,0);
+	delay(150);
+	put32(GPPUDCLK0,(1<<14)|(1<<15));
+	delay(150);
+	put32(GPPUDCLK0,0);
+
+	//set up UART registers
+	put32(AUX_ENABLES,1);                   //Enable mini uart (this also enables access to it registers)
+	put32(AUX_MU_CNTL_REG,0);               //Disable auto flow control and disable receiver and transmitter (for now)
+	put32(AUX_MU_IER_REG,0);                //Disable receive and transmit interrupts
+	put32(AUX_MU_LCR_REG,3);                //Enable 8 bit mode
+	put32(AUX_MU_MCR_REG,0);                //Set RTS line to be always high
+	put32(AUX_MU_BAUD_REG,270);             //Set baud rate to 115200
+	put32(AUX_MU_CNTL_REG,3);               //Finally, enable transmitter and receiver
+}
+\end{lstlisting}
+
+Les fonctions suivantes permettent respectivement la transmission s'un caractère, la réception d'un caractère et la transmission d'une chaîne de caractères.\\
+\begin{lstlisting}
+void uart_send ( char c )
+{
+	while(1) {
+		if(get32(AUX_MU_LSR_REG)&0x20) 
+			break;
+	}
+	put32(AUX_MU_IO_REG,c);
+}
+
+char uart_recv ( void )
+{
+	while(1) {
+		if(get32(AUX_MU_LSR_REG)&0x01) 
+			break;
+	}
+	return(get32(AUX_MU_IO_REG)&0xFF);
+}
+
+void uart_send_string(char* str)
+{
+	for (int i = 0; str[i] != '\0'; i ++) {
+		uart_send((char)str[i]);
+	}
+}
+\end{lstlisting}
+
+Les fonctions \textbf{put32} et \textbf{get32} permettent respectivement d'écrire une valeur dans un registre de 32 bits et de lire une valeur dans un regsitre de 32 bits.
+\begin{lstlisting}
+	.globl put32
+	put32:
+		str w1,[x0]
+		ret
+
+	.globl get32
+	get32:
+		ldr w0,[x0]
+		ret
+\end{lstlisting}
+
+\subsection{Timer}
+Nous utilisons le timer générique Arm, qui fait partie de la conception du noyau Arm64. C'est bien, car les timers génériques existent pour tous les processeurs Armv8.\\
+Ce composant nous permet de générer à une interruption qui après un temps t donné. L'idée est par exemple de l'utiliser pour allumer des leds à des intervalles de temps donnés. Ce périphérique offre deux registres: \textbf{TVAL} et \textbf{CVAL} qui permettent de le configurer.\\
+Le matériel contient un compteur général appelé \textbf{System Counter}, qui au démarrage du matériel commence à s'incrémenter. Notre timer se base sur ce System Counter pour fonctionner.\\
+
+\textbf{Nous commençons à initialiser le timer lui permettons de générer des interruptions.}\\
+\begin{lstlisting}
+	gen_timer_init:
+		mov x0, #1
+		msr CNTP_CTL_EL0, x0
+		ret
+\end{lstlisting}
+Ceci écrit 1 dans le registre de contrôle ( CNTP\_CTL\_EL0) du temporisateur physique EL1.\\
+
+\textbf{Activer l'interruption de la minuterie au cœur du processeur}\\
+Les IRQ du temporisateur générique Arm sont câblées à un contrôleur/registre d'interruption par cœur. Pour le noyau 0, il s'agit de TIMER\_INT\_CTRL\_0 situé à l'adresse 0x40000040 ;
+\begin{lstlisting}
+	void enable_interrupt_controller()
+	{
+    	// Enables Core 0 Timers interrupt control for the generic timer 
+    	put32(TIMER_INT_CTRL_0, TIMER_INT_CTRL_0_VALUE);
+	}
+\end{lstlisting}
+
+\textbf{Traitement des interruptions de la minuterie}\\
+Le noyau obtient un irq. Le noyau vérifie si cela vient du timer ; si c'est le cas, le noyau définit le temporisateur pour déclencher la prochaine interruption.
+
+\begin{lstlisting}
+	void handle_irq(void) {
+    	// Each Core has its own pending local intrrupts register
+    	unsigned int irq = get32(INT_SOURCE_0);
+    	switch (irq) {
+        	case (GENERIC_TIMER_INTERRUPT):
+            	handle_generic_timer_irq();
+        		break;
+    	...
+\end{lstlisting}
+Le gestionnaire d'exceptions EL1h appelle la fonction ci-dessus. La fonction lit INT\_SOURCE\_0, où le bit 1 est pour notre minuteur CNTP.\\
+
+\textbf{Réinitialiser la minuterie (timer.S)}\\
+Le noyau écrit une valeur delta (1<<24) dans TVAL, demandant une interruption pour se déclencher après 1<<24 ticks.\\
+
+\begin{lstlisting}
+	gen_timer_reset:
+    	mov x0, #1
+		lsl x0, x0, #24 
+		msr CNTP_TVAL_EL0, x0
+    	ret
+\end{lstlisting}
+
+\chapter{Conclusion}
+Au cours de notre travail, nous avons eu à découvrir certains périphériques du Raspberry ainsi que l'architecture du processeur avec certaines de ses fonctionnalités afin d'offrir une documentation les expliquant ainsi qu'une configuration de ces derniers. Nous avons eu à travailler sur les périphériques GPIO, le mini UART, le timer générique de l'ARM, les interruptions. Cette expérience nous a offert une expérience qui nous initie dans le monde des logiciels pour embarqués et celui de la programmation des processeur ARM. 
+\chapter{Bibliographie}
+\begin{itemize}
+\item Zhao Jiong: A Heavily Commented Linux Kernel Source Code Kernel Version 0.12\\
+\item ARM Cortex-A Series Version: 1.0 Programmer’s Guide for ARMv8-A\\
+\item Christophe Blaess: Programmation système en C sous Linux\\
+\item ARM:Armv8-A Instruction Set Architecture\\
+\item ARM:Exception model\\
+\item Application Note Bare-metal Boot Code for ARMv8-A Processors Version 1.0\\
+\item QA7 ARM Quad A7 core Gert van Loo, 18 August 2014\\
+\item BCM2837 ARM Peripherals\\
+\item Construction d'un système d'exploitation pour le Raspberry Pi\_BarePar Jake Sandler\\
+\item Arm Cortex-A53 MPCore Processor Revision: r0p4 Technical Reference Manual\\
+\item Raspberry Pi platform without an operating system Petr Vanc \\
+\item ARM:AArch64 Programmer's Guides Generic Timer\\
+\item Operating System Concepts,8th Edition[A4]\\
+\item TinyOS Programming Philip Levis October 27, 2006\\
+\item Andrew S. Tanenbaum, Albert S. Woodhull - Operating systems design and implementation-Prentice Hall (1997)\\
+\item operating-systems-design-implementation-3rd-edition-1-\\
+\item Raspberry Pi 3 - Guide de l'utilisateur - Dunod\\
+\end{itemize}
+
+
+\chapter{Webographie}
+\begin{itemize}
+	\item https://wiki.osdev.org/Raspberry\_Pi\_Bare\_Bones\\
+	\item https://jsandler18.github.io/\\
+	\item https://www.valvers.com/open-software/raspberry-pi/bare-metal-programming-in-c-part-1\\
+	\item https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/\\
+	\item https://isometimes.github.io/rpi4-osdev/\\
+	\item https://fxlin.github.io/p1-kernel/\\
+	\item https://gcc.gnu.org/onlinedocs/gcc/ARM-Function-Attributes.html\#ARM-Function-Attributes\\
+	\item https://github.com/bztsrc/raspi3-tutorial\\
+	\item https://alexandre-laurent.developpez.com/articles/hardware/raspberry-pi/installation-systeme/\#LIII-A-1\\
+	\item https://www.linuxfromscratch.org/lfs/\\
+	\item https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads\\
+	\item https://github.com/tywkeene/doom-kernel/tree/main/kernel\\
+	\item https://github.com/metebalci/baremetal-rpi\\
+	\item https://github.com/mstachowsky/tinykernel\\
+	\item https://fr.wikipedia.org/wiki/TinyOS\\
+	\item https://github.com/tinyos/tinyos-main\\
+\end{itemize}
+
+
+\end{document}
